@@ -1,0 +1,71 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* HEADER  */
+
+header {
+    z-index: 1;
+}
+
+.interacoes1 {
+    margin-top: 40px;
+}
+
+.interacoes2 {
+    margin-top: 30px;
+}
+
+.carrinho {
+    margin-left: 25%;
+}
+
+.perfil {
+    margin-left: 20px;
+}
+
+@media (max-width: 1037px) {
+
+    .carrinho {
+        margin-left: 0;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .perfil {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 777px) {
+    .interacoes2 {
+            transform: translateX(35%);
+    }
+
+    .carrinho {
+        margin-left: 0;
+    }
+
+    .perfil {
+        margin-left: 50px;
+    }
+
+    header {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 220px) {
+    .logo {
+        margin: 0 auto;
+    }
+
+    .perfil {
+        margin-left: 0;
+    }
+}
+/* ______________________________________________________________ */
