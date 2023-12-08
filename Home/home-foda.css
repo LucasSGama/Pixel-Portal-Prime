@@ -71,13 +71,69 @@ header {
 /* ______________________________________________________________ */
 
 
-.novidades {
-    margin-top: 30px;
+.titulo {
+    margin-top: 50px;
     margin-left: 20px;
-    width: 200px;
+    width: 800px;
     margin-bottom: 20px;
 }
 
-.card-group {
-    gap: 20px;
+.items-novidades {
+    gap: -5px;
+    margin-top: 10PX;
+    margin-right: 10px;
+    margin-left: 10px;
 }
+
+.card{
+    overflow: hidden;
+}
+
+.card img{
+    width: 100%;
+    margin: auto;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.imagens-marcas {
+    margin-top: 20px;
+}
+
+.rounded-circle:hover {
+    opacity: 0.5;
+}
+
+
+
+
+/* PARTE FODA */
+  /* @keyframes noise-background {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    20% {
+      transform: translate3d(50px, 30px, 0);
+    }
+    40% {
+      transform: translate3d(10px, 50px, 0);
+     }
+     60% {
+      transform: translate3d(30px, 20px, 0);
+     }
+     80% {
+      transform: translate3d(50px, 0, 0);
+     }
+    100% {
+      transform: translate3d(100px, 0, 0);
+    }
+  }
+  body {        
+      background: #093740 url("https://assets.codepen.io/5817405/noise_2.png");
+      background-blend-mode: overlay;
+  
+      animation: noise-background 0.5s steps(1) infinite;
+  
+      content: '';
+    }
+  } */

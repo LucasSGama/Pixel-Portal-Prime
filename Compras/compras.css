@@ -1,0 +1,177 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+
+.head{
+    display: flex;
+    background-color: black;
+}
+
+.head .logo{
+    width: 280px;
+    height: 160px;
+    margin-top: -30px;
+    margin-left: 30px;
+}
+
+.head button {
+    width: 120px;
+    height: 35px;
+    margin-top: 25px;
+    margin-left: 40px;
+}
+
+.head input {
+    margin-left: 30px;
+    width: 400px;
+    height: 50px;
+    margin-top: 25px;
+    border-radius: 20px;
+    border: transparent;
+    border-color: transparent;
+    padding-left: -20PX;
+    margin-top: 30px;
+    background-color: rgba(218, 216, 216, 0.3); /*Deixa o fundo transparente*/
+}
+
+/* PRODUTO */
+
+.camisas{
+    display: flex;
+    flex-direction: column;
+    margin-top: 120px;
+    margin-left: 130px;
+    gap: 15px;
+}
+
+.camisa2{
+    margin-top: 40px;
+    margin-left: 130px;
+}
+
+.camisa3{
+    margin-top: 120px;
+    margin-left: 40px;
+}
+
+.produto {
+    display: inline-flex;
+}
+
+/* DESCRIÇÃO */
+
+.letra{
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Mono', monospace;  
+    margin-left: 900px;
+    margin-top: -650px;
+}
+
+.lançamento{
+    background-color: rgb(106, 202, 10);
+    border: 0px;
+    border-radius: 40px;
+    width: 300px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.valor{
+    text-decoration: line-through;
+    color: gray;
+    margin-top: 30px;
+}
+
+.valor2{
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Mono', monospace; 
+    font-size: 45px;
+    margin-left: 130px;
+    margin-top: -40px;
+}
+
+.escolha{
+    margin-left: 900px;
+    margin-top: 30px;
+}
+
+.p{
+    margin-left: 75px;
+    margin-top: -20px;
+    color: gray;
+}
+
+.botao{
+    background-color: #803bb5;
+    width: 400px;
+    height: 30px;
+    border: 0px;
+    border-radius: 40px;
+    margin-left: 900px;
+    margin-top: 150px;
+    color: white;
+}
+
+.tamanhos{
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-left: 900px;
+    margin-top: 50px;
+}
+
+.tamanhos button{
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: white;
+    color: gray;
+
+}
+
+.tamanho div{
+    display: inline-flex;
+    gap: 30px;
+    
+}
+
+.descricao{
+    margin-top: 100px;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 130px;
+    width: 45%;
+}
+
+/* AVALIAÇÕES */
+.avaliacoes{
+    font-family: 'Oswald', sans-serif;
+    margin-left: 900px;
+    margin-top: -450px;
+    
+}
+
+.fabricio{
+    margin-left: 870px;
+    display: inline-flex;
+    margin-top: 50px;
+    background-color: rgb(232, 232, 232);
+    border-radius: 10px;
+}
+
+.ana{
+    margin-left: 870px;
+    display: inline-flex;
+    margin-top: 50px;
+    background-color: rgb(232, 232, 232);
+    border-radius: 10px;
+}
