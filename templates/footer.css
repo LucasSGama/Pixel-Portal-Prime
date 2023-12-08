@@ -1,0 +1,89 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    font-size: 13px;
+    margin-top: 45px;
+  }
+  
+  .escrita-footer {
+    line-height: 15px;
+    color: #fff;
+    margin-left: 10px;
+  }
+  
+  .esquerda-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .esquerda-footer nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    font-size: 13px;
+    margin-left: -20px;
+  }
+  
+  .esquerda-footer nav ul li a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .esquerda-footer nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .logo-social {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .links-social {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .redes-sociais {
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+  
+  .redes-sociais a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .face, .twitter, .insta {
+    text-decoration: none;
+    color: white;
+    transition: color 0.5s ease, background-position 1s ease;
+  }
+  
+  .face:hover {
+    color: #1947ab ;
+  }
+  
+  .twitter:hover {
+    color: #00acee;
+  }
+  
+  .insta {
+    display: inline-block; /* Para aplicar o gradiente à palavra */
+    background-image: linear-gradient(blue 8px, purple, rgb(255, 94, 0), yellow);
+    -webkit-background-clip: text; /* Aplica o gradiente apenas ao texto no Chrome e Safari */
+    background-clip: text; /* Aplica o gradiente apenas ao texto */
+    color: white; /* Torna o texto transparente para o gradiente aparecer */
+    transition: background-position 1s ease, color 0.5s ease, font-size 1s ease;
+  }
+  
+  .insta:hover {
+        background-position: 100%;
+        color: transparent;
+    }
