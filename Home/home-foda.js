@@ -4,7 +4,7 @@
     var cardImage = document.getElementById("chapolim");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "Imagens-não-oficiais/chapolim-estampa.png";
+      cardImage.src = "../Imagens-não-oficiais/chapolim-estampa.png";
       cardImage.style.opacity = 1;
   }, 300); // Aguarde 300 milissegundos (duração da transição) antes de alterar a imagem
 }
@@ -14,7 +14,7 @@ function restoreChapolim() {
     var cardImage = document.getElementById("chapolim");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "Imagens-não-oficiais/chapolim.png";
+      cardImage.src = "../Imagens-não-oficiais/chapolim.png";
       cardImage.style.opacity = 1;
   }, 300);
 }
@@ -26,7 +26,7 @@ function changeDC() {
     var cardImage = document.getElementById("camisa-dc");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "Imagens-não-oficiais/dc-estampa.png";
+      cardImage.src = "../Imagens-não-oficiais/chapolim-estampa.png";
       cardImage.style.opacity = 1;
   }, 300); // Aguarde 300 milissegundos (duração da transição) antes de alterar a imagem
 }
@@ -36,7 +36,7 @@ function restoreDC() {
     var cardImage = document.getElementById("camisa-dc");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "Imagens-não-oficiais/camisa-dc.png";
+      cardImage.src = "../Imagens-não-oficiais/chapolim.png";
       cardImage.style.opacity = 1;
   }, 300);
 }
@@ -48,7 +48,7 @@ function changeMarvel() {
     var cardImage = document.getElementById("camisa-marvel");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "Imagens-não-oficiais/marvel-estampa.png";
+      cardImage.src = "../Imagens-não-oficiais/marvel-estampa.png";
       cardImage.style.opacity = 1;
   }, 300); // Aguarde 300 milissegundos (duração da transição) antes de alterar a imagem
 }
@@ -58,7 +58,7 @@ function restoreMarvel() {
     var cardImage = document.getElementById("camisa-marvel");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "Imagens-não-oficiais/marvel.png";
+      cardImage.src = "../Imagens-não-oficiais/marvel.png";
       cardImage.style.opacity = 1;
   }, 300);
 }
@@ -70,7 +70,7 @@ function changeStarWars() {
     var cardImage = document.getElementById("camisa-star-wars");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "Imagens-não-oficiais/star-wars-estampa.png";
+      cardImage.src = "../Imagens-não-oficiais/star-wars-estampa.png";
       cardImage.style.opacity = 1;
   }, 300); // Aguarde 300 milissegundos (duração da transição) antes de alterar a imagem
 }
@@ -80,7 +80,7 @@ function restoreStarWars() {
     var cardImage = document.getElementById("camisa-star-wars");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "Imagens-não-oficiais/starwars.png";
+      cardImage.src = "../Imagens-não-oficiais/starwars.png";
       cardImage.style.opacity = 1;
   }, 300);
 }

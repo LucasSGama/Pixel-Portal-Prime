@@ -1,4 +1,4 @@
-<footer>
+../<footer>
 
 <div class="esquerda-footer">
     <nav>
@@ -20,17 +20,17 @@
     <nav>
         <ul class="redes-sociais">
             <div class="links-social">
-                <img src="Imagens-não-oficiais/Twitter logo.png" alt="twitter" class="logo-social">
+                <img src="../Imagens-não-oficiais/Twitter logo.png" alt="twitter" class="logo-social">
                 <li><a href="https://twitter.com/home" class="twitter">Pixel Portal</a></li>
             </div>
 
             <div class="links-social">
-                <img src="Imagens-não-oficiais/Facebook logo.png" alt="facebook" class="logo-social">
+                <img src="../Imagens-não-oficiais/Facebook logo.png" alt="facebook" class="logo-social">
                 <li><a href="https://www.facebook.com" class="face">Pixel Portal</a></li>
             </div>
 
             <div class="links-social">
-                <img src="Imagens-não-oficiais/Instagram logo.png" alt="instagram" class="logo-social">
+                <img src="../Imagens-não-oficiais/Instagram logo.png" alt="instagram" class="logo-social">
                 <li><a href="https://www.instagram.com" class="insta">Pixel Portal</a></li>
             </div>
         </ul>

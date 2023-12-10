@@ -15,7 +15,7 @@
 }
 
 .items-novidades {
-    gap: -5px;
+    gap: -2px;
     margin-top: 10PX;
     margin-right: 10px;
     margin-left: 10px;
@@ -39,6 +39,8 @@
 .rounded-circle:hover {
     opacity: 0.5;
 }
+
+
 
 
 /* FOOTER */
