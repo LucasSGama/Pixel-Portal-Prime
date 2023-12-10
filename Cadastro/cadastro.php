@@ -10,6 +10,8 @@
                     
         $result = mysqli_query($mysqli, "INSERT INTO usuarios(nome_de_usuario,email,senha)
         VALUES ('$nome_de_usuario', '$email', '$senha')");
+
+        header("Location: ../Login/login.php");
     }
 ?>
 
