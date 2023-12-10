@@ -1,3 +1,11 @@
+<?php
+
+if(!isset($_SESSION)) {
+  session_start();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -61,9 +69,9 @@
             <div class="col-md-4 localizacao">
                 <label for="">Localização</label>
                 <br>
-                <input type="text" placeholder="Insira seu endereço:">
+                <input type="text" placeholder="Insira seu endereço">
                 <br>
-                <label for="">CEP:</label>
+                <label for="" class="CEP-TELEFONE">CEP:</label>
                 <br>
                 <input type="number" placeholder="Insira seu CEP">
             </div>
@@ -71,9 +79,16 @@
                 <label for="data-de-nascimento">Data de Nascimento:</label>
                 <br>
                 <input type="date" name="dataNas" id="dataNas">
+                <br>
+                <!-- TELEFONE -->
+                <label for="telefone" class="CEP-TELEFONE">Telefone:</label>
+                <br>
+                <input type="number" class="telefone" placeholder="Insira seu número">
+                <br>
             </div>
         </div>
-        <button type="button" class="btn btn-success salvar">Salvar</button>
+        <a href="../Home/home-foda.php"><button type="button" class="btn botoes voltar">Voltar</button></a>
+        <button type="button" class="btn btn-success botoes salvar">Salvar</button>
     </div>
 </form>
 

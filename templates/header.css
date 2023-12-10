@@ -11,7 +11,8 @@ header {
 }
 
 .interacoes2 {
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .carrinho {
@@ -30,13 +31,13 @@ header {
 
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .perfil {
         margin-left: 5px;
     }
 }
 
-@media (max-width: 777px) {
+@media (max-width: 800px) {
     .interacoes2 {
             transform: translateX(35%);
     }
@@ -51,6 +52,7 @@ header {
 
     header {
         margin-bottom: 20px;
+        height: 330px;
     }
 }
 

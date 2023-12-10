@@ -1,4 +1,4 @@
-../<footer>
+<footer>
 
 <div class="esquerda-footer">
     <nav>
