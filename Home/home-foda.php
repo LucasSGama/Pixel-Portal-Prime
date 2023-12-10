@@ -1,3 +1,10 @@
+<?php
+
+if(!isset($_SESSION)) {
+  session_start();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -19,12 +26,47 @@
 
     <!-- Link para o footer -->
     <link rel="stylesheet" href="../templates/footer.css">
-</head>
+
+    <style>
+        /* Estilize seu pop-up aqui */
+        #popup {
+            display: none;
+            position: fixed;
+            width: 350px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+        .botao {
+          width: 100px;
+          border-radius: 10px;
+          position: relative;
+        }
+        .parte-baixo {
+          display: flex;
+        }
+    </style>
+
+  </head>
 <body>
     <?php
       include_once("../templates/header.php");
     ?>
 
+<div id="popup">
+    <!-- Conteúdo do pop-up -->
+    <p>Bem vindo de volta, <?php echo $_SESSION['nome'];?>!!</p>
+    <div class="parte-baixo">
+    <p>🤓🤓🤓🤓🤓🤓🤓🤓🤓</p>
+    <button class="botao" onclick="fecharPopup()">Fechar</button>
+    </div>
+</div>
      <!-- Carrossel -->
 
      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -136,6 +178,22 @@
 
 
 </body>
+<script>
+    // Função para abrir o pop-up automaticamente
+    window.onload = function() {
+        abrirPopup();
+    };
+
+    // Função para abrir o pop-up
+    function abrirPopup() {
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    // Função para fechar o pop-up
+    function fecharPopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+</script>
 <script src="home-foda.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </html>

@@ -102,7 +102,7 @@ section {
 .Login .inputBox input ::placeholder {
     color: black;
 }
-.Login .inputBox #btn {
+#btn {
     position: relative;
     border: none;
     outline: none;
@@ -113,7 +113,7 @@ section {
     font-weight: 500;
     transition: 0.5s;
 }
-.Login .inputBox #btn:hover {
+#btn:hover {
     background-color: rgb(148, 0, 158);
 }
 .Login .group {
