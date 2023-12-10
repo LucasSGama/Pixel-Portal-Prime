@@ -66,10 +66,10 @@
                 </span>
             </div>
             <div class="inputBox">
-                <a href="../Login/login.html"><input type="submit" value="Enviar" id="submit" name="submit" onclick="return validarEmail()" onclick="return validarSenha()" class="btn"></a>
+                <a href="../index.php"><input type="submit" value="Enviar" id="submit" name="submit" onclick="return validarEmail()" onclick="return validarSenha()" class="btn"></a>
             </div>
             <div class="group">
-                <a href="../Login/login.html">
+                <a href="../index.php">
                 Depois de enviar clique aqui!
                 <br>    
                 Já tenho uma conta!

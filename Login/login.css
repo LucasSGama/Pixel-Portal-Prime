@@ -70,7 +70,7 @@ section {
     border-radius: 20px;
     width: 500px;
     height: 600px;
-    margin-top: 10px;
+    margin-top: -15px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 25px 50px rgba(0,0,0,0.1);
@@ -139,7 +139,7 @@ section {
 
 .Login img {
     margin-bottom: 8px;
-    margin-top: -38px;
+    margin-top: -60px;
     padding: 0;
     height: 180px;
     width: 180px;
