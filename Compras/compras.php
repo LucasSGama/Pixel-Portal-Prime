@@ -28,6 +28,7 @@
 
 <div class="container">
         <!-- Produto -->
+        <a href="../Home/home-foda.php"<button type="button" class="btn btn-secondary">Voltar</button></a>
         <div class="row mt-3 mainEsquerda">
             <div class="col-md-6">
                 <section class="encimaEsquerda">

@@ -60,3 +60,17 @@ svg {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.voltar{
+    background-color: #7E33B7;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.voltar:hover {
+    background-color: #64437d;
+    color: black;
+}
