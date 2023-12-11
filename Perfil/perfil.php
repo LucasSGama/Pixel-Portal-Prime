@@ -33,7 +33,7 @@ $sql = "UPDATE usuarios SET
 
  // Executa a instrução SQL
  if ($mysqli->query($sql) === TRUE) {
-    echo "Dados atualizados com sucesso!";
+    echo '<script>alert("Alterações salvas");</script>';
     // Atualiza também os valores na sessão para refletir as mudanças
     $_SESSION['nome'] = $nome;
     $_SESSION['email'] = $email;
