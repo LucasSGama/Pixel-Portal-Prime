@@ -4,12 +4,12 @@
     {
         include_once('../Base/conexao.php');
         
-        $nome_de_usuario = $_POST['nome_de_usuario'];
+        $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
                     
-        $result = mysqli_query($mysqli, "INSERT INTO usuarios(nome_de_usuario,email,senha)
-        VALUES ('$nome_de_usuario', '$email', '$senha')");
+        $sql = mysqli_query($mysqli, "INSERT INTO usuarios(nome,email,senha)
+        VALUES ('$nome', '$email', '$senha')");
 
         header("Location: ../Login/login.php");
     }
@@ -26,8 +26,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <!-- Style.css -->
     <link rel="stylesheet" href="cadastro.css">
-    <link rel="shortcut icon" href="imgs/icon.png" type="image/x-icon">
+    
     <title>Cadastro</title>
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="../Imagens-não-oficiais/logo.png" type="image/x-icon">
 </head>
 <body>
     <form novalidate action="cadastro.php" method="POST">
@@ -39,7 +42,7 @@
             <br>
             <!-- NOME -->
             <div class="inputBox">
-                <input type="text" placeholder="Nome do Usuário" minlength="6" maxlength="18" name="nome_de_usuario" id="nome_de_usuario" required>
+                <input type="text" placeholder="Nome do Usuário" minlength="6" maxlength="18" name="nome" id="nome" required>
                 <p class="subtitulo">Entre 6 e 18 caracteres</p>
             </div>
             <!-- EMAIL -->

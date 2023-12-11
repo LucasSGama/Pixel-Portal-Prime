@@ -26,7 +26,7 @@ function changeDC() {
     var cardImage = document.getElementById("camisa-dc");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "../Imagens-não-oficiais/chapolim-estampa.png";
+      cardImage.src = "../Imagens-não-oficiais/dc-estampa.png";
       cardImage.style.opacity = 1;
   }, 300); // Aguarde 300 milissegundos (duração da transição) antes de alterar a imagem
 }
@@ -36,7 +36,7 @@ function restoreDC() {
     var cardImage = document.getElementById("camisa-dc");
   cardImage.style.opacity = 0.5;
   setTimeout(function() {
-      cardImage.src = "../Imagens-não-oficiais/chapolim.png";
+      cardImage.src = "../Imagens-não-oficiais/camisa-dc.png";
       cardImage.style.opacity = 1;
   }, 300);
 }

@@ -15,6 +15,9 @@ if(!isset($_SESSION)) {
     <!-- Link para o CSS/Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+    <!-- Icon -->
+    <link rel="shortcut icon" href="../Imagens-não-oficiais/logo.png" type="image/x-icon">
+
     <!-- Link para os icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
@@ -99,9 +102,9 @@ if(!isset($_SESSION)) {
           <div class="card">
             <img src="../Imagens-não-oficiais/chapolim.png" class="card-img-top" id="chapolim" alt="camisa-chapolin" height="350px" width="200px" onmouseover="changeChapolim()" onmouseout="restoreChapolim()">
             <div class="card-body">
-              <h5 class="card-title">CAMISETA ART HISTORY</h5>
+              <h5 class="card-title">CAMISETA CHAMPOLIM</h5>
               <p class="card-text">R$ 69,90</p>
-              <a href=""><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
+              <a href="../Compras/compras.php"><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
             </div>
           </div>
         </div>
@@ -109,7 +112,7 @@ if(!isset($_SESSION)) {
           <div class="card">
             <img src="../Imagens-não-oficiais/camisa-dc.png" class="card-img-top" id="camisa-dc" alt="camisa-dc" height="350px" width="200px" onmouseover="changeDC()" onmouseout="restoreDC()">
             <div class="card-body">
-              <h5 class="card-title">CAMISETA TOLKIEN</h5>
+              <h5 class="card-title">CAMISETA DC</h5>
               <p class="card-text">R$ 69,90</p>
               <a href=""><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
             </div>
@@ -119,7 +122,7 @@ if(!isset($_SESSION)) {
           <div class="card">
             <img src="../Imagens-não-oficiais/marvel.png" class="card-img-top" id="camisa-marvel" alt="camisa-marvel" height="350px" width="200px" onmouseover="changeMarvel()" onmouseout="restoreMarvel()">
             <div class="card-body">
-              <h5 class="card-title">CAMISETA PARANOID</h5>
+              <h5 class="card-title">CAMISETA MARVEL</h5>
               <p class="card-text">R$ 69,90</p>
               <a href=""><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
             </div>
@@ -129,7 +132,7 @@ if(!isset($_SESSION)) {
           <div class="card">
             <img src="../Imagens-não-oficiais/starwars.png" class="card-img-top" id="camisa-star-wars" alt="Star Wars" height="350px" width="200px" onmouseover="changeStarWars()" onmouseout="restoreStarWars()">
             <div class="card-body">
-              <h5 class="card-title">CAMISETA FOLLOW YOUR</h5>
+              <h5 class="card-title">CAMISETA STAR WARS</h5>
               <p class="card-text">R$ 69,90</p>
               <a href=""><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
             </div>

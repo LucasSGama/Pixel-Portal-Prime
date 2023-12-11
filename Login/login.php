@@ -1,11 +1,18 @@
 <?php
     include_once('Base/conexao.php');
 
+    if(isset($_POST['email']) || isset($_POST['senha'])) {
+
+        if(strlen($_POST['email']) == 0) {
+            echo "Insira seu email";
+        } else if(strlen($_POST['senha']) == 0) {
+            echo "Preencha sua senha";
+        } else {
 
             $email = $mysqli->real_escape_string($_POST['email']);
             $senha = $mysqli->real_escape_string($_POST['senha']);
 
-            $sql_code = "SELECT id, nome, email, senha FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+            $sql_code = "SELECT id, nome, email, senha, telefone, endereco, data_nascimento, genero, CEP FROM usuarios WHERE  email = '$email' AND senha = '$senha'";
             $sql_query = $mysqli->query($sql_code) or die("Falha na conexão" . $mysqli->error);
 
             $quantidade = $sql_query->num_rows;
@@ -18,14 +25,21 @@
                     session_start();
                 }
 
-                // Salvar informações na sessão
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
-            $_SESSION['email'] = $usuario['email'];
+                $_SESSION['id'] = $usuario['id'];
+                $_SESSION['nome'] = $usuario['nome'];
+                $_SESSION['email'] = $usuario['email'];
+                $_SESSION['senha'] = $usuario['senha'];
+                $_SESSION['telefone'] = $usuario['telefone'];
+                $_SESSION['endereco'] = $usuario['endereco'];
+                $_SESSION['data_nascimento'] = $usuario['data_nascimento'];
+                $_SESSION['genero'] = $usuario['genero'];
+                $_SESSION['CEP'] = $usuario['CEP'];
 
                 header("Location: Home/home-foda.php");
 
             }
+        }
+    }
 
 
 ?>
