@@ -110,11 +110,11 @@ if(!isset($_SESSION)) {
         </div>
         <div class="col">
           <div class="card">
-            <img src="../Imagens-não-oficiais/camisa-dc.png" class="card-img-top" id="camisa-dc" alt="camisa-dc" height="350px" width="200px" onmouseover="changeDC()" onmouseout="restoreDC()">
+            <img src="../Imagens-não-oficiais/chapolim.png" class="card-img-top" id="camisa-dc" alt="camisa-dc" height="350px" width="200px" onmouseover="changeDC()" onmouseout="restoreDC()">
             <div class="card-body">
-              <h5 class="card-title">CAMISETA DC</h5>
+              <h5 class="card-title">CAMISETA CHAPOLIM</h5>
               <p class="card-text">R$ 69,90</p>
-              <a href=""><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
+              <a href="../Compras/compras.php"><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
             </div>
           </div>
         </div>
@@ -124,7 +124,7 @@ if(!isset($_SESSION)) {
             <div class="card-body">
               <h5 class="card-title">CAMISETA MARVEL</h5>
               <p class="card-text">R$ 69,90</p>
-              <a href=""><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
+              <button type="button" class="btn btn-outline-success btn-lg" disabled>Comprar</button>
             </div>
           </div>
         </div>
@@ -134,7 +134,7 @@ if(!isset($_SESSION)) {
             <div class="card-body">
               <h5 class="card-title">CAMISETA STAR WARS</h5>
               <p class="card-text">R$ 69,90</p>
-              <a href=""><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
+              <button type="button" class="btn btn-outline-success btn-lg" disabled>Comprar</button>
             </div>
           </div>
         </div>

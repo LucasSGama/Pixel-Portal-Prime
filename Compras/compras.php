@@ -51,7 +51,7 @@
                     <h3 class="valor2">R$49,90</h3>
                 </div>
                 <div class="escolha mt-3">
-                    <input type="number" id="quantity" name="quality" min="1" max="10" class="form-control">
+                    <input type="number" id="quantity" name="quality" min="1" max="10" class="form-control" style="width: 150px;">
                 </div>
                 <div class="tamanhos mt-3">
                     <div class="btn-group" role="group">

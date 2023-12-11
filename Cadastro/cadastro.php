@@ -7,12 +7,23 @@
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
+
+         // Verificar se o email já existe no banco de dados
+         $verificar_email = mysqli_query($mysqli, "SELECT * FROM usuarios WHERE email = '$email'");
+        
+         if(mysqli_num_rows($verificar_email) > 0) {
+             // O email já existe, redirecione para uma página de erro ou faça algo apropriado
+             echo '<script>alert("E-mail já cadastrado. Tente outro.");</script>';
+
+            } else {
                     
         $sql = mysqli_query($mysqli, "INSERT INTO usuarios(nome,email,senha)
         VALUES ('$nome', '$email', '$senha')");
 
-        header("Location: ../Login/login.php");
-    }
+        header("Location: ../index.php");
+            }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +44,7 @@
     <link rel="shortcut icon" href="../Imagens-não-oficiais/logo.png" type="image/x-icon">
 </head>
 <body>
-    <form novalidate action="cadastro.php" method="POST">
+    <form novalidate action="cadastro.php" method="POST" onsubmit="return validarEmail2();">
     <div class="content">
         <section>
         <div class="Cadastro">
@@ -69,7 +80,7 @@
                 </span>
             </div>
             <div class="inputBox">
-                <a href="../index.php"><input type="submit" value="Enviar" id="submit" name="submit" onclick="return validarEmail()" onclick="return validarSenha()" class="btn"></a>
+            <button type="submit" class="btn" name="submit" onclick="return validarEmail()">Enviar</button>
             </div>
             <div class="group">
                 <a href="../index.php">
@@ -84,6 +95,24 @@
     </div>
     </form>
     <!-- BootStrap - Script -->
+    <script>
+        function validarEmail() {
+            // Função para validar o email antes de enviar o formulário
+            var email = document.getElementById('email').value;
+            var submitButton = document.getElementById('submit');
+
+            // Desativa o botão de enviar se o e-mail já estiver cadastrado
+            if (email === '<?php echo $email; ?>') {
+                alert('E-mail já cadastrado. Tente outro.');
+                submitButton.disabled = true;
+            } else {
+                submitButton.disabled = false;
+            }
+
+            // Retorna true para enviar o formulário se tudo estiver correto
+            return true;
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXDwqOz6Ff40Cp3aU/ap1ZPKBObCg1WZhSuH" crossorigin="anonymous"></script>
     <script src="cadastro.js"></script>
