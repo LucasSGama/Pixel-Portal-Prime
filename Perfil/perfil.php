@@ -223,6 +223,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <br>
             </div>
         </div>
+        <br>
         <div class="botoes">
         <a href="../Home/home-foda.php"><button type="button" class="btn voltar">Voltar</button></a>
         <button type="button" class="btn btn-danger" name="excluir_perfil" onclick="confirmarExclusao()">Deletar</button>

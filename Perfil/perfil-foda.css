@@ -62,6 +62,7 @@ body::before {
 .genero {
     /* border: 1px solid black; */
     width: 130px;
+    margin-bottom: 30px;
 }
 
 .localizacao {
