@@ -1,10 +1,12 @@
 <?php
     include_once('Base/conexao.php');
+    $text_email = "";
 
     if(isset($_POST['email']) || isset($_POST['senha'])) {
 
         if(strlen($_POST['email']) == 0) {
             echo "Insira seu email";
+            $text_email = "Insira senha";
         } else if(strlen($_POST['senha']) == 0) {
             echo "Preencha sua senha";
         } else {
@@ -37,8 +39,10 @@
 
                 header("Location: Home/home-foda.php");
 
+            } else {
+                $text_email = "Email ou senha incorretos!!";
             }
-        }
+        } 
     }
 
 
@@ -64,9 +68,9 @@
         p {
             font-size: small;
             margin-top: -30px;
-            margin-left: -70px;
-            margin-bottom: 40px;
-            opacity: 0.7;
+            margin-left: -180px;
+            margin-bottom: 30px;
+            opacity: 1;
             color: black;
         }
     </style>
@@ -89,11 +93,12 @@
             <br>
             <div class="inputBox">
                 <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+                <p><?php echo htmlspecialchars($text_email, ENT_QUOTES, 'UTF-8'); ?></p>
             </div>
             <div class="inputBox">
                 <input type="password" id="senha" name="senha" placeholder="Digite sua senha" minlength="8" maxlength="20" required>
             <div class="inputBox">
-                <a href="Home/home-foda.php"><input type="submit" value="Entrar" name="Entrar" id="btn"></a>
+                <input type="submit" value="Entrar" name="Entrar" id="btn">
             </div>
             </form>
             <div class="group">

@@ -3,7 +3,7 @@
     border-radius: 10px;
     padding: 15px;
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 700px;
     height: auto;
     background-color: rgba(181, 181, 181, 0.7);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adicionando sombra */
@@ -25,7 +25,7 @@ body::before {
     background-repeat: repeat;
     filter: blur(5px);
     z-index: -1;
-    height: 140vh;
+    height: 100vh;
 }
 
 @media (max-width: 777px) {
@@ -75,14 +75,8 @@ body::before {
     width: 200px;
 }
 
-.botoes {
-    margin-top: 30px;
-}
 
-.voltar{
-    background-color: #7E33B7;
-    color: black;
-}
+
 
 a {
     text-decoration: none;
@@ -91,10 +85,6 @@ a {
 .voltar:hover {
     background-color: #64437d;
     color: black;
-}
-
-.Editar {
-    margin-left: 420px;
 }
 
 .telefone {

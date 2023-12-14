@@ -3,7 +3,7 @@
 <div class="esquerda-footer">
     <nav>
         <ul>
-            <li><a href="#">Sobre nós</a></li>
+            <li><a href="../Sobre-nos/sobre-nos.php">Sobre nós</a></li>
             <li><a href="#">Empresa</a></li>
             <li><a href="#">Serviços Online</a></li>
             <li><a href="#">Suporte</a></li>

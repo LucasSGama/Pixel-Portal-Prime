@@ -1,7 +1,7 @@
 <header class="container-fluid">
         <div class="row head">
             <div class="col-md-3 logo">
-                <img src="../Imagens-não-oficiais/loguinho.png" alt="logo" width="200px">
+                <a href="../Home/home-foda.php"><img src="../Imagens-não-oficiais/loguinho.png" alt="logo" width="200px"></a>
             </div>
             <div class="col-md-6 interacoes1">
                 <input class="form-control barra-de-pesquisa" type="text" placeholder="O que você procura?">
