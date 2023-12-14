@@ -127,6 +127,7 @@
         </div>
     </div>';
 }?>
+<button type="button" class="btn btn-outline-success btn-lg" disabled>Comprar</button>
 </main>
     <?php
   include_once("../templates/footer.php");
