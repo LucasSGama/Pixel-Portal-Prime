@@ -116,7 +116,7 @@ if(!isset($_SESSION)) {
             <div class="card-body">
               <h5 class="card-title">CAMISETA DC</h5>
               <p class="card-text">R$ 69,90</p>
-              <a href="#"><button type="button" class="btn btn-outline-success btn-lg">Comprar</button></a>
+              <button type="button" class="btn btn-outline-success btn-lg" disabled>Comprar</button>
             </div>
           </div>
         </div>
