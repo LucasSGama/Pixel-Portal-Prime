@@ -1,3 +1,32 @@
+<?php
+
+if(!isset($_SESSION)) {
+    session_start();
+  }  
+// Seu código de conexão ao banco de dados aqui
+include_once "../Base/conexao.php"; // Substitua pelo seu arquivo de conexão
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isset($_POST['id_produto'])) {
+    $quantidade = $_POST['quantidade'];
+    $id_produto = $_POST['id_produto'];
+    $usuario_id = $_SESSION['id']; // Substitua pelo nome da sua variável de sessão que armazena o ID do usuário
+
+    // Insira os dados na tabela do carrinho
+    $sql = "INSERT INTO carrinho (usuario_id, produto_id, quantidade) VALUES (?, ?, ?)";
+    $stmt = $mysqli->prepare($sql);
+
+    if ($stmt) {
+        $stmt->bind_param("iii", $usuario_id, $id_produto, $quantidade);
+        $stmt->execute();
+        $stmt->close();
+    }
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -28,7 +57,7 @@
 
 <div class="container">
         <!-- Produto -->
-        <a href="../Home/home-foda.php"<button type="button" class="btn btn-secondary">Voltar</button></a>
+        <a href="../Home/home-foda.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
         <div class="row mt-3 mainEsquerda">
             <div class="col-md-6">
                 <section class="encimaEsquerda">
@@ -47,30 +76,20 @@
             <div class="col-md-6">
                 <div class="letra">
                     <h1>Camiseta Feminina Chapolin</h1>
-                    <button class="btn btn-warning">Pré-Lançamento</button>
-                    <p class="valor"> De: R$79,90</p>
+                    <p id="valor"> De: R$79,90</p>
                     <h3 class="valor2">R$49,90</h3>
                 </div>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                <input type="hidden" name="id_produto" value="1"> <!-- Substitua pelo ID do produto -->
                 <div class="escolha mt-3">
-                    <input type="number" id="quantity" name="quality" min="1" max="10" class="form-control" style="width: 150px;">
-                </div>
-                <div class="tamanhos mt-3">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary">PP</button>
-                        <button type="button" class="btn btn-primary">P</button>
-                        <button type="button" class="btn btn-primary">M</button>
-                    </div>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary">G</button>
-                        <button type="button" class="btn btn-primary">GG</button>
-                        <button type="button" class="btn btn-primary">2GG</button>
-                    </div>
+                    <input type="number" id="quantity" name="quantidade" value="1" minlength="1" maxlength="10" required class="form-control" style="width: 150px;">
                 </div>
                 <button class="btn btn-success mt-3 Comprar" disabled>COMPRAR</button>
                 <br>
-                <button class="btn btn-secondary mt-3">Adicionar no carrinho<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <button type="submit" class="btn btn-secondary mt-3">Adicionar no carrinho<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                 </svg></button>
+                </form>
             </div>
         </div>
 
@@ -130,6 +149,13 @@
 
 <script src="compras.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+    var quantity = document.getElementById('quantity').value;
 
+    if (quantity.length < 8 || quantity.length > 20) {
+            alert("A quantidade deve ser entre 1 e 10 unidades.");
+            return false;
+        }
+</script>
 </body>
 </html>

@@ -74,3 +74,8 @@ a {
     background-color: #64437d;
     color: black;
 }
+
+#valor {
+    text-decoration: underline;
+    color: red;
+}

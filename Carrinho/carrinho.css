@@ -1,0 +1,86 @@
+.main-cima h1 {
+    font-weight: 400;
+    font-size: 30px;
+}
+
+
+/* scrool */
+.scrool-horizontal {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.caixa-scrool {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid black;
+    padding-right: 20px;
+}
+
+.imagem-produto {
+    height: 100px;
+    width: 100px;
+    border-right: solid 1px black;
+}
+
+.nav-estrelas{
+    display: inline-flex;
+}
+
+.estrela {
+    height: 10px;
+}
+
+/* main-baixo */
+.main-baixo {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-baixo h1 {
+    font-weight: 400;
+    font-size: 30px;
+    margin-top: 25px;
+}
+
+.conteudo-main-baixo {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px 0px 50px;
+}
+
+
+/* conteúdo que fica na parte de baixo da pag */
+.produto {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.imagem-produto2 {
+    display: inline-flex;
+    align-items: center;
+}
+
+.imagem-produto2 img {
+    height: 150px;
+    width: 150px;
+}
+
+#titulo-produto {
+    margin-left: 12.5%;
+    margin-bottom: 5px;
+}
+
+.preco-quantidade {
+    margin-top: 50px;
+}
+
