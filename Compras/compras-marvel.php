@@ -64,12 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
                     <!-- <img src="Imagens-não-oficiais/camisa2.png" alt="camiseta1" class="img-fluid">
                     <img src="Imagens-não-oficiais/costas.png" alt="camisa2" class="img-fluid mt-2"> -->
                     <ul class="imagemMenor">
-                        <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-chapolim/camisa2.png" alt="produto" width="70px" height="70px" id="imgMenor1"></a></li>
-                        <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-chapolim/costas.png" alt="produto" width="70px" height="70px" id="imgMenor2"></a></li>
-                        <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-chapolim/camisa1.png" alt="produto" width="70px" height="70px" id="imgMenor3"></a></li>
+                        <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-Marvel/camisa-marvel1.png" alt="produto" width="70px" height="70px" id="imgMenor1"></a></li>
+                        <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-Marvel/camisa-marvel2.png" alt="produto" width="70px" height="70px" id="imgMenor2"></a></li>
+                        <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-Marvel/camisa-marvel3.png" alt="produto" width="70px" height="70px" id="imgMenor3"></a></li>
                 </ul>
                 <div class="imagemPrincipal">
-                    <img src="../Imagens-não-oficiais/Camisas/Camisas-chapolim/camisa1.png" alt="produto" width="430px" class="img-fluid" height="430px" id="imgMaior">
+                    <img src="../Imagens-não-oficiais/Camisas/Camisas-Marvel/camisa-marvel1.png" alt="produto" width="430px" class="img-fluid" height="430px" id="imgMaior">
                 </div>
                 </section>
             </div>
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
                     <h3 class="valor2">R$49,90</h3>
                 </div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                <input type="hidden" name="produto_id" value="1"> <!-- Substitua pelo ID do produto -->
+                <input type="hidden" name="produto_id" value="3"> <!-- Substitua pelo ID do produto -->
                 <div class="escolha mt-3">
                     <input type="number" id="quantity" name="quantidade" value="1" minlength="1" maxlength="10" required class="form-control" style="width: 150px;">
                 </div>
@@ -168,15 +168,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
         const imgMaior = document.querySelector("#imgMaior")
 
         imgMenor1.addEventListener("click", function() {
-            imgMaior.src = "../Imagens-não-oficiais/camisa2.png"
+            imgMaior.src = "../Imagens-não-oficiais/Camisas/Camisas-Marvel/camisa-marvel1.png"
         });
 
         imgMenor2.addEventListener("click", function() {
-            imgMaior.src = "../Imagens-não-oficiais/costas.png"
+            imgMaior.src = "../Imagens-não-oficiais/Camisas/Camisas-Marvel/camisa-marvel2.png"
         });
 
         imgMenor3.addEventListener("click", function() {
-            imgMaior.src = "../Imagens-não-oficiais/camisa1.png"
+            imgMaior.src = "../Imagens-não-oficiais/Camisas/Camisas-Marvel/camisa-marvel3.png"
         });
 </script>
 </body>

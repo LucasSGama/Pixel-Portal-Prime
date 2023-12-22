@@ -37,33 +37,37 @@
             <div class="row">
                 
                 <?php   
+                // Seu código de conexão ao banco de dados aqui
+                include_once "../Base/conexao.php"; // Substitua pelo seu arquivo de conexão
+
                 if(!isset($_SESSION)) {
                     session_start();
                   }  
-                // Seu código de conexão ao banco de dados aqui
-                include_once "../Base/conexao.php"; // Substitua pelo seu arquivo de conexão
                 
-                $usuario_id = $_SESSION['id'];
+                $usuario_id = $_SESSION['usuario_id'];
+
+                // Processar remoção de item antes de exibir a lista
+                if(isset($_POST['excluir_item']) && isset($_POST['carrinho_id'])) {
+                    $carrinho_id = $_POST['carrinho_id'];
+                    $sqlRemoverItem = "DELETE FROM carrinho WHERE usuario_id = ? AND carrinho_id = ?";
+                    $stmt = $mysqli->prepare($sqlRemoverItem);
+                    $stmt->bind_param("ii", $usuario_id, $carrinho_id);
+                    $stmt->execute();
+                    $stmt->close();
+                    
+                }
                 
-                // Consulta para recuperar os produtos no carrinho do usuário
-                $sql = "SELECT produtos.id as produto_id, produtos.nome, produtos.descricao, produtos.imagem, carrinho.quantidade, produtos.preco FROM carrinho
-                INNER JOIN produtos ON carrinho.produto_id = produtos.id
-                WHERE carrinho.usuario_id = $usuario_id";
-
-                $result = $mysqli->query($sql);
-
+                $sql = "SELECT carrinho.carrinho_id, produtos.produto_id, produtos.nome, produtos.descricao, produtos.imagem, carrinho.quantidade, produtos.preco FROM carrinho
+                INNER JOIN produtos ON carrinho.produto_id = produtos.produto_id
+                WHERE carrinho.usuario_id = ?";
+    
+                $stmt = $mysqli->prepare($sql);
+                $stmt->bind_param("i", $usuario_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+            
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        // Verificação e lógica de exclusão dentro do loop
-                        // if (isset($_POST['excluir_item'])) {
-                        //     $produto_id = $_POST['produto_id'];
-                        //     $sqlRemoverItem = "DELETE FROM carrinho WHERE usuario_id = ? AND produto_id = ?";
-                        //     $stmt = $mysqli->prepare($sqlRemoverItem);
-                        //     $stmt->bind_param("ii", $usuario_id, $produto_id);
-                        //     $stmt->execute();
-                        //     $stmt->close();
-                        // }
-                        
                 ?>
        <div class="col-md-6 mb-3">
     <div class="conteudo-main-baixo row align-items-center">
@@ -89,26 +93,14 @@
                                     <div class="col-md-6">
                                         <label>Preço</label>
                                         <p><strong>R$ <?php echo $row['preco']; ?></strong></p><br>
-                                        <form action="carrinho.php" method="POST">
-                                        <input type="hidden" name="produto_id" value="<?php echo $row['produto_id']; ?>">
-                                        <button type="submit" class="btn btn-danger" name="excluir_item_<?php echo $row['produto_id']; ?>">Remover item</button>
+                                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                                            <input type="hidden" name="carrinho_id" value="<?php echo $row['carrinho_id']; ?>">
+                                            <button type="submit" class="btn btn-danger" name="excluir_item">Remover item</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                            <?php
-                                if (isset($_POST['excluir_item_' . $row['produto_id']])) {
-                                    // Restante do código para remover o item
-                                    $produto_id = $row['produto_id'];
-                                    $sqlRemoverItem = "DELETE FROM carrinho WHERE usuario_id = ? AND produto_id = ?";
-                                    $stmt = $mysqli->prepare($sqlRemoverItem);
-                                    $stmt->bind_param("ii", $usuario_id, $produto_id); // "ii" indica que são dois valores inteiros
-                                    $stmt->execute();
-                                    $stmt->close();
-                                }
                             
-                        
-                        ?>
                         </div>
                     </div>
                 </div>
@@ -117,8 +109,8 @@
         <?php
     }
 } else {
-    echo '
-    <div class="container">
+    echo 
+    '<div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 text-center">
                 <p class="nenhum">Nenhum produto encontrado no carrinho</p>
@@ -126,7 +118,8 @@
             </div>
         </div>
     </div>';
-}?>
+}
+?>
 <button type="button" class="btn btn-outline-success btn-lg" disabled>Comprar</button>
 </main>
     <?php
@@ -136,47 +129,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-<!-- <div class="caixa-direita col-md-3 mb-3">
-    <h1>Resumo do pedido</h1>
-    <div class="caixa-direita-cima">
-        <div class="escrita1">
-            <label>
-                1 Produto<br>
-                Frete
-            </label>
-        </div>
-
-        <div class="escrita2">
-            <label>
-                R$ 150,00<br>
-                <strong>Grátis!</strong>
-            </label>
-        </div>
-    </div>
-
-    <div class="caixa-direita-meio">
-        <label class="escrita3"><strong>Total</strong></label>
-
-        <div class="escrita4">
-            <label>
-                <strong>R$ 150,00</strong><br>
-            </label>
-            
-            <p>Em até <span><strong>10x sem juros!</strong></span></p>
-        </div>
-    </div>
-
-    <div class="caixa-direita-baixo">
-        <a href="../../Identificação/Barcelona/indentifi.html"><strong>Continuar</strong></a>
-        <p>Adicionar mais produtos</p>
-
-        <br><br>
-
-        <p>
-            Possui cupom ou vale?<br>
-            Você poderá usá-los na<br>
-            Etapa de pagamento.
-        </p>
-    </div> -->

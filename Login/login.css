@@ -41,11 +41,11 @@ body, html {
     text-align: center;
     color: #fff; /* Ajuste a cor do texto conforme necessário */
     padding: 20px;
+    margin-top: 20px;
 }
 
 /* ______________________________________ */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -159,12 +159,3 @@ section {
   }
 
   /* ______________________________ */
-
-  @font-face {
-    font-family: 'NewSquare';
-    src: url('New_Square/NovaSquare-Regular.ttf') format('woff2'),
-         url('New_Square/NovaSquare-Regular.ttf') format('woff');
-    /* Adicione outros formatos, se necessário */
-    font-weight: normal;
-    font-style: normal;
-  }

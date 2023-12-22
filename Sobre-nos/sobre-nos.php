@@ -61,37 +61,37 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 imagens-marcas">
     <div class="col d-flex flex-column align-items-center">
       <div class="card h-100 border-0">
-        <img src="../Imagens-não-oficiais/duda.jpg" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">
+        <img src="../Imagens-não-oficiais/Integrantes/duda.jpg" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">
       </div>
       <p class="mt-2" style="font-size: 1.5rem; font-weight: bold;">Duda</p>
     </div>
     <div class="col d-flex flex-column align-items-center">
       <div class="card h-100 border-0">
-        <img src="../Imagens-não-oficiais/richard.jpg" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">
+        <img src="../Imagens-não-oficiais/Integrantes/richard.jpg" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">
       </div>
       <p class="mt-2" style="font-size: 1.5rem; font-weight: bold;">Richard</p>
     </div>
     <div class="col d-flex flex-column align-items-center">
       <div class="card h-100 border-0">
-        <img src="../Imagens-não-oficiais/lucas.jpg" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">
+        <img src="../Imagens-não-oficiais/Integrantes/lucas.jpg" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">
       </div>
       <p class="mt-2" style="font-size: 1.5rem; font-weight: bold;">Lucas</p>
     </div>
     <div class="col d-flex flex-column align-items-center">
       <div class="card h-100 border-0">
-        <img src="../Imagens-não-oficiais/rafa.jpg" class="card-img-top rounded-circle" alt="..." style="width: 240px; height: 240px; object-fit: cover;">
+        <img src="../Imagens-não-oficiais/Integrantes/rafa.jpg" class="card-img-top rounded-circle" alt="..." style="width: 240px; height: 240px; object-fit: cover;">
       </div>
       <p class="mt-2" style="font-size: 1.5rem; font-weight: bold;">Rafa</p>
     </div>
     <div class="col d-flex flex-column align-items-center">
       <div class="card h-100 border-0">
-        <img src="../Imagens-não-oficiais/desgraça.jpg" class="card-img-top rounded-circle" alt="..." style="width: 240px; height: 240px; object-fit: cover;">
+        <img src="../Imagens-não-oficiais/Integrantes/desgraça.jpg" class="card-img-top rounded-circle" alt="..." style="width: 240px; height: 240px; object-fit: cover;">
       </div>
       <p class="mt-2" style="font-size: 1.5rem; font-weight: bold;">Rafa 2</p>
     </div>
     <div class="col d-flex flex-column align-items-center">
       <div class="card h-100 border-0">
-        <img src="../Imagens-não-oficiais/daniel.jpg" class="card-img-top rounded-circle" alt="..." style="width: 240px; height: 240px; object-fit: cover;">
+        <img src="../Imagens-não-oficiais/Integrantes/daniel.jpg" class="card-img-top rounded-circle" alt="..." style="width: 240px; height: 240px; object-fit: cover;">
       </div>
       <p class="mt-2" style="font-size: 1.5rem; font-weight: bold;">Daniel</p>
     </div>

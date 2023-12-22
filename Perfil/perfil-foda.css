@@ -11,24 +11,27 @@
     margin-top: 10px;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 
 body::before {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url(../Imagens-não-oficiais/naruto-background3.jpg);
+    width: 100%;
+    height: 100%;
+    background-image: url(../Imagens-não-oficiais/Fundo-perfil/naruto-background3.jpg);
     background-size: cover;
     background-position: center;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     filter: blur(5px);
     z-index: -1;
-    height: 100vh;
 }
 
-@media (max-width: 777px) {
+@media (max-width: 907px) {
     body::before {
         height: 200vh;
     }
@@ -115,6 +118,7 @@ header {
     header {
         height: 330px;
     }
+    
 }
 
 .paragrafos {
@@ -129,3 +133,37 @@ header {
 .NOME-EMAIL {
     margin-top: 30px;
 } */
+
+
+.deletar {
+    margin-left: 60%;
+}
+
+@media (max-width: 600px) { 
+
+    .deletar {
+        margin-left: 0;
+    }
+}
+
+#foto-de-perfil {
+    position: fixed;
+    width: 360px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.MudarDeFoto {
+    margin-left: 30px;
+}
+
+.informacoes-principais {
+    margin-top: 20px;
+}

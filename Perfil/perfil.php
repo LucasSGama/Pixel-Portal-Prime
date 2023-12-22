@@ -9,7 +9,7 @@ include_once('../Base/conexao.php');
 // Verifica se o botão de exclusão foi acionado
 if (isset($_POST['confirmar_exclusao'])) {
     // Monta a instrução SQL para excluir o usuário (substitua o nome da tabela conforme a sua estrutura)
-    $sqlExcluir = "DELETE FROM usuarios WHERE id = '$_SESSION[id]'";
+    $sqlExcluir = "DELETE FROM usuarios WHERE usuario_id = '$_SESSION[usuario_id]'";
 
     // Executa a instrução SQL
     if ($mysqli->query($sqlExcluir) === TRUE) {
@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $CEP = isset($_POST['CEP']) ? $_POST['CEP'] : '';
             $data_nascimento = isset($_POST['data_nascimento']) ? $_POST['data_nascimento'] : '';
             $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : '';
+            $foto = isset($_POST['foto']) ? $_POST['foto'] : '';
 
         // Monta a instrução SQL para inserir dados na tabela (substitua os nomes dos campos e da tabela conforme a sua estrutura)
         $sql = "UPDATE usuarios SET 
@@ -50,8 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     endereco='$endereco', 
                     CEP='$CEP', 
                     data_nascimento='$data_nascimento', 
-                    telefone='$telefone' 
-                    WHERE id = '$_SESSION[id]'";
+                    telefone='$telefone',
+                    foto='$foto' 
+                    WHERE usuario_id = '$_SESSION[usuario_id]'";
 
 
         // Executa a instrução SQL
@@ -65,8 +67,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['CEP'] = $CEP;
             $_SESSION['data_nascimento'] = $data_nascimento;
             $_SESSION['telefone'] = $telefone;
+            $_SESSION['foto'] = $foto;
         } else {
             echo "Erro na atualização de dados: " . $mysqli->error;
+        }
+
+         // Manipulação do upload da foto
+         if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
+            $foto = file_get_contents($_FILES['foto']['tmp_name']);
+        
+            // Atualiza a coluna 'foto' no banco de dados
+            $sqlUpdateFoto = "UPDATE usuarios SET foto = ? WHERE usuario_id = ?";
+            $stmt = $mysqli->prepare($sqlUpdateFoto);
+            $stmt->bind_param("si", $foto, $_SESSION['usuario_id']);
+        
+            if ($stmt->execute()) {
+                // Sucesso ao atualizar a foto
+                
+                // Atualiza a variável de sessão 'foto'
+                $_SESSION['foto'] = $foto;
+        
+                // ... (seu código adicional)
+            } else {
+                echo "Erro ao atualizar a foto: " . $stmt->error;
+            }
+        
+            $stmt->close();
         }
     }
 
@@ -92,7 +118,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Link para o footer -->
     <link rel="stylesheet" href="../templates/footer.css">
     
-    <link rel="shortcut icon" href="imgs/icon.png" type="image/x-icon">
     <title>Conta</title>
 
     <style>
@@ -133,6 +158,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 1000;
         }
+
+       
     </style>
 </head>
 <body>
@@ -145,12 +172,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Body -->
 
 
-    <form action="perfil.php" method="POST" id="excluir-form">
+    <form action="perfil.php" method="POST" id="excluir-form" enctype="multipart/form-data">
+    <div class="col-md-6">
     <div id="confirmarExclusao" style="display: none;">
         <p>Tem certeza que deseja excluir o perfil?</p>
         <button type="submit" class="btn btn-danger" name="confirmar_exclusao">Confirmar Exclusão</button>
         <button type="button" class="btn btn-secondary" onclick="cancelarExclusao()">Cancelar</button>
     </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <div id="foto-de-perfil" style="display: none;">
+            <p>Selecione a sua foto</p>
+            <input type="file" name="foto" accept="image/*">
+            <br>
+            <br>
+            <button type="button" class="btn btn-secondary" onclick="NaoMudarFoto()">Cancelar</button>      
+            <button type="submit" class="btn btn-success  salvar" name="submit" id="submit" onclick="abrirPopup()">Salvar</button>
+        </div>
+    </div>
+
            <!-- Seção do pop-up -->
     <div id="popup">
     <!-- Conteúdo do pop-up -->
@@ -165,13 +207,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <h1 class="mb-4">INFORMAÇÕES DO PERFIL</h1>
         <div class="row">
+            <!-- _______________________________ -->
             <div class="col-md-6 esquerda-meio-container">
                 <h3>FOTO DE PERFIL</h3>
-                <img src="../Imagens-não-oficiais/fabricio.png" alt="fabricio" class="img-fluid">
+                <div class="foto-perfil-container position-relative">
+                    <?php
+                    if (isset($_SESSION['foto'])) {
+                        echo '<img src="data:image/jpeg;base64,' . base64_encode($_SESSION['foto']) . '" alt="Foto de Perfil" class="img-fluid rounded-circle foto-de-perfil" style="width: 230px; height: 230px; object-fit: cover;">';
+                    } else {
+                        echo '<img src="../Imagens-não-oficiais/foto-de-perfil-default.jpg" alt="default" class="img-fluid rounded-circle foto-de-perfil" style="width: 230px; height: 230px; object-fit: cover;">';
+                    }
+                    ?>
+                    
+                    <button type="button" class="btn btn-primary MudarDeFoto" onclick="MudarDefoto()">Mudar foto de perfil</button>
+
+
+                    <!-- Adicione input para upload de foto -->
+                </div>
             </div>
-            <div class="col-md-6">
+
+            <!-- ___________________ -->
+            <div class="col-md-6 informacoes-principais">
                 <div class="mb-3">
-                    <input type="hidden">
                     <label for="nome" class="form-label">Nome:</label>
                     <input type="text" name="nome" id="nome" class="form-control" minlength="6" maxlength="18" required value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>">
                 </div>
@@ -188,7 +245,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row mt-4 baixo-conteiner">
             <h3>Informações adicionais:</h3>
             <div class="col-md-4 genero">
-                <label for="genero" name="genero" id="genero" class="form-label">Genêro:</label>
+                <!-- id="genero" -->
+                <label for="genero" class="form-label">Genêro:</label>
                 <br>
                 <input type="radio" id="masculino" name="genero" value="masculino" <?php echo (isset($_SESSION['genero']) && $_SESSION['genero'] === 'masculino') ? 'checked' : ''; ?>>
                 <label for="masculino">Masculino</label>
@@ -226,7 +284,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <br>
         <div class="botoes">
         <a href="../Home/home-foda.php"><button type="button" class="btn voltar">Voltar</button></a>
-        <button type="button" class="btn btn-danger" name="excluir_perfil" onclick="confirmarExclusao()">Deletar</button>
+        <button type="button" class="btn btn-danger deletar" name="excluir_perfil" onclick="confirmarExclusao()">Deletar</button>
         <button type="submit" class="btn btn-success  salvar" name="submit" id="submit" onclick="abrirPopup()">Salvar</button>
         <!-- <button type="submit" class="btn btn-success botoes Editar" name="submit" id="submit" onclick="abrirPopup()">Salvar</button> -->
         </div>
@@ -267,6 +325,17 @@ function cancelarExclusao() {
     document.getElementById('confirmarExclusao').style.display = 'none';
     // Habilita o botão de salvar quando a confirmação for cancelada
     document.getElementById('submit').disabled = false;
+}
+
+    // Função para abrir a seção de mudar a foto
+function MudarDefoto() {
+    document.getElementById('foto-de-perfil').style.display = 'block';
+ 
+}
+
+// Função para cancelar a troca de foto de perfil
+function NaoMudarFoto() {
+    document.getElementById('foto-de-perfil').style.display = 'none';
 }
 </script>
 </body>

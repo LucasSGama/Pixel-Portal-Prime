@@ -14,7 +14,7 @@
             $email = $mysqli->real_escape_string($_POST['email']);
             $senha = $mysqli->real_escape_string($_POST['senha']);
 
-            $sql_code = "SELECT id, nome, email, senha, telefone, endereco, data_nascimento, genero, CEP FROM usuarios WHERE  email = '$email' AND senha = '$senha'";
+            $sql_code = "SELECT usuario_id, nome, email, senha, telefone, endereco, data_nascimento, genero, CEP, foto FROM usuarios WHERE  email = '$email' AND senha = '$senha'";
             $sql_query = $mysqli->query($sql_code) or die("Falha na conexão" . $mysqli->error);
 
             $quantidade = $sql_query->num_rows;
@@ -27,7 +27,7 @@
                     session_start();
                 }
 
-                $_SESSION['id'] = $usuario['id'];
+                $_SESSION['usuario_id'] = $usuario['usuario_id'];
                 $_SESSION['nome'] = $usuario['nome'];
                 $_SESSION['email'] = $usuario['email'];
                 $_SESSION['senha'] = $usuario['senha'];
@@ -36,6 +36,7 @@
                 $_SESSION['data_nascimento'] = $usuario['data_nascimento'];
                 $_SESSION['genero'] = $usuario['genero'];
                 $_SESSION['CEP'] = $usuario['CEP'];
+                $_SESSION['foto'] = $usuario['foto'];
 
                 header("Location: Home/home-foda.php");
 
@@ -59,7 +60,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <!-- Style.css -->
     <link rel="stylesheet" href="Login/login.css">
-    <link rel="shortcut icon" href="imgs/icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="Imagens-não-oficiais/logo.png" type="image/x-icon">
     <title>Login</title>
 
 
@@ -79,7 +80,7 @@
     <div class="video-background">
         <div class="video-wrap">
             <video id="myVideo" loop muted autoplay>
-                <source src="Imagens-não-oficiais/SuperMarioBros2.mp4" type="video/mp4">
+                <source src="Imagens-não-oficiais/Fundos-animados/SuperMarioBros2.mp4" type="video/mp4">
                 Seu navegador não suporta o elemento de vídeo.
             </video>
         </div>

@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   /* overflow: hidden; */
-  background-image: url(../Imagens-não-oficiais/Stardew-Valley.gif);
+  background-image: url(../Imagens-não-oficiais/Fundos-animados/Stardew-Valley.gif);
   backdrop-filter: blur(1px);
   background-size: 150% 150%;
   background-position: center;
@@ -41,12 +41,11 @@ body {
 
 /* ______________________________________ */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 section {
   position: relative;
@@ -71,7 +70,7 @@ section {
   box-shadow: 0 25px 50px rgba(0,0,0,0.1);
 }
 .Cadastro h2 {
-  font-family: 'NewSquare', sans-serif;
+  font-family: 'Arial', sans-serif;
   position: relative;
   width: 100%;
   text-align: center;
@@ -159,15 +158,6 @@ section {
 
 /* ______________________________ */
 
-@font-face {
-  font-family: 'NewSquare';
-  src: url('New_Square/NovaSquare-Regular.ttf') format('woff2'),
-       url('New_Square/NovaSquare-Regular.ttf') format('woff');
-  /* Adicione outros formatos, se necessário */
-  font-weight: normal;
-  font-style: normal;
-}
-
 
 .show-password {
   position: absolute;
@@ -183,7 +173,7 @@ section {
 }
 
 .olho2 {
-  top: 35%;
+  top: 45%;
 }
 
 .subtitulo {
