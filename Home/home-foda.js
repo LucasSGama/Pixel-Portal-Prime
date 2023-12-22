@@ -84,3 +84,20 @@ function restoreStarWars() {
       cardImage.style.opacity = 1;
   }, 300);
 }
+
+
+// BOTÃO DE MOSTRAR MAIS
+
+document.addEventListener('DOMContentLoaded', function() {
+  var verMaisBtn = document.getElementById('verMaisBtn');
+  var conteudoOculto = document.querySelector('.ocultar-conteudo');
+
+  verMaisBtn.addEventListener('click', function() {
+      // Alterna a classe para controlar a visibilidade do conteúdo
+      conteudoOculto.classList.toggle('ocultar-conteudo');
+
+      // Alterna o texto do botão entre "Ver Mais" e "Mostrar Menos"
+      var textoAtual = verMaisBtn.textContent.trim();
+      verMaisBtn.textContent = (textoAtual === 'Mostrar Mais') ? 'Mostrar Menos' : 'Mostrar Mais';
+  });
+});

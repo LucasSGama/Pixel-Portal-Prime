@@ -12,6 +12,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../Imagens-não-oficiais/person.svg" alt="" height="45px" width="50px"></a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../Perfil/perfil.php">Perfil</a></li>
+            <li><a class="dropdown-item" href="../Comunidade/comunidade.php">Comunidade</a></li>
             <li><a class="dropdown-item" href="../index.php">Sair</a></li>
           </ul>
         </li>

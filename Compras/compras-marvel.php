@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
             </div>
             <div class="col-md-6">
                 <div class="letra">
-                    <h1>Camiseta Feminina Chapolin</h1>
+                    <h1>Camiseta Marvel</h1>
                     <p id="valor"> De: R$79,90</p>
                     <h3 class="valor2">R$49,90</h3>
                 </div>

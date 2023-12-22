@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
         $stmt->execute();
         $stmt->close();
     }
+
+    header("Location: ../Carrinho/carrinho.php");
 }
 
 ?>

@@ -54,6 +54,15 @@ if(!isset($_SESSION)) {
         .parte-baixo {
           display: flex;
         }
+
+        #verMaisBtn {
+            opacity: 0.8; /* Define a opacidade para tornar o botão meio transparente */
+            font-weight: bold; /* Torna a letra mais grossa */
+        }
+
+        .ocultar-conteudo {
+            display: none;
+        }
     </style>
 
   </head>
@@ -95,7 +104,6 @@ if(!isset($_SESSION)) {
           <span class="visually-hidden">Próximo</span>
         </button>
       </div>
-
       <!-- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; -->
 
       <h1 class="titulo">NOVIDADES DO MÊS DE DEZEMBRO!</h1>
@@ -145,8 +153,45 @@ if(!isset($_SESSION)) {
       <H1 class="titulo">TEMAS</H1>
 
       <div class="row row-cols-1 row-cols-md-4 g-4 imagens-marcas">
+        <div class="col harry_potter">
+          <a href="#" class="text-decoration-none">
+          <div class="card h-100 border-0">
+            <img src="../Imagens-não-oficiais/Marcas/harry-potter.jpeg" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">
+          </div>
+        </a>
+        </div>
         <div class="col">
-         
+          <a href="#" class="text-decoration-none">
+          <div class="card h-100 border-0">
+            <img src="../Imagens-não-oficiais/Marcas/marvel.jpg" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">
+          </div>
+        </a>
+        </div>
+        <div class="col">
+          <a href="#" class="text-decoration-none">
+          <div class="card h-100 border-0">
+            <img src="../Imagens-não-oficiais/Marcas/disney.png" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">
+          </div>
+        </a>
+        </div>
+        <div class="col">
+          <a href="#" class="text-decoration-none">
+          <div class="card h-100 border-0">
+            <img src="../Imagens-não-oficiais/Marcas/dc.png" class="card-img-top rounded-circle" alt="..." style="width: 240px; height: 240px; object-fit: cover;">
+          </div>
+        </a>
+        </div>
+      </div>
+
+      <br>
+      <div class="container text-center">
+        <!-- Botão "Ver Mais" -->
+        <button class="btn btn-outline-primary" id="verMaisBtn">Mostrar Mais</button>
+    </div>
+    <br>
+
+    <div class="row row-cols-1 row-cols-md-4 g-4 imagens-marcas ocultar-conteudo">
+        <div class="col harry_potter">
           <a href="#" class="text-decoration-none">
           <div class="card h-100 border-0">
             <img src="../Imagens-não-oficiais/Marcas/harry-potter.jpeg" class="card-img-top rounded-circle" alt="..." style="width: 230px; height: 230px; object-fit: cover;">

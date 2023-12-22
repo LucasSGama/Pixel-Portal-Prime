@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
                     <ul class="imagemMenor">
                         <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-StarWars/camisa-starwars1.png" alt="produto" width="70px" height="70px" id="imgMenor1"></a></li>
                         <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-StarWars/camisa-starwars2.png" alt="produto" width="70px" height="70px" id="imgMenor2"></a></li>
-                        <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-StarWars/camisa-starwars3.jpg" alt="produto" width="70px" height="70px" id="imgMenor3"></a></li>
+                        <li><a href="#"><img src="../Imagens-não-oficiais/Camisas/Camisas-StarWars/camisa-starwars3.png" alt="produto" width="70px" height="70px" id="imgMenor3"></a></li>
                 </ul>
                 <div class="imagemPrincipal">
                     <img src="../Imagens-não-oficiais/Camisas/Camisas-StarWars/camisa-starwars1.png" alt="produto" width="430px" class="img-fluid" height="430px" id="imgMaior">
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
             </div>
             <div class="col-md-6">
                 <div class="letra">
-                    <h1>Camiseta Feminina Chapolin</h1>
+                    <h1>Camiseta Star Wars</h1>
                     <p id="valor"> De: R$79,90</p>
                     <h3 class="valor2">R$49,90</h3>
                 </div>
@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
         });
 
         imgMenor3.addEventListener("click", function() {
-            imgMaior.src = "../Imagens-não-oficiais/Camisas/Camisas-StarWars/camisa-starwars3.jpg"
+            imgMaior.src = "../Imagens-não-oficiais/Camisas/Camisas-StarWars/camisa-starwars3.png"
         });
 </script>
 </body>

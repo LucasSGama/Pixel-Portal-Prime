@@ -1,0 +1,50 @@
+.ocultar-conteudo {
+    display: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-image: url(../Imagens-não-oficiais/background_comentario.jpg);
+    background-size: cover;
+    background-position: center center; /* centraliza a imagem */
+    width: 700px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#comentario {
+width: 70%; /* Ocupa 100% da largura do contêiner pai */
+height: 150px; /* Altura fixa em pixels (ajuste conforme necessário) */
+resize: none; /* Impede o redimensionamento */
+padding: 10px; /* Adiciona um espaçamento interno para melhor aparência */
+border: 1px solid #000000; /* Adiciona uma borda para separar o textarea do restante do formulário */
+border-radius: 20px; /* Adiciona bordas arredondadas */
+font-size: 14px; /* Define o tamanho da fonte */
+box-sizing: border-box; /* Garante que a largura inclua preenchimento e borda */
+background-color: rgba(255, 255, 255, 0.2);
+}
+
+#comentario::placeholder {
+    color: black; /* Cor do placeholder */
+}
+
+#comentario:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+.botoes {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    /* border: 1px solid black; */
+}
+
+.botoes .btn-success {
+    margin-left: 320px;
+}
+
+a button{
+    margin-left: 150px;
+}
