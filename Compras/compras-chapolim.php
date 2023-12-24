@@ -170,15 +170,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
         const imgMaior = document.querySelector("#imgMaior")
 
         imgMenor1.addEventListener("click", function() {
-            imgMaior.src = "../Imagens-não-oficiais/camisa2.png"
+            imgMaior.src = "../Imagens-não-oficiais/Camisas/Camisas-chapolim/camisa2.png"
         });
 
         imgMenor2.addEventListener("click", function() {
-            imgMaior.src = "../Imagens-não-oficiais/costas.png"
+            imgMaior.src = "../Imagens-não-oficiais/Camisas/Camisas-chapolim/costas.png"
         });
 
         imgMenor3.addEventListener("click", function() {
-            imgMaior.src = "../Imagens-não-oficiais/camisa1.png"
+            imgMaior.src = "../Imagens-não-oficiais/Camisas/Camisas-chapolim/camisa1.png"
         });
 </script>
 </body>

@@ -90,11 +90,14 @@ function restoreStarWars() {
 
 document.addEventListener('DOMContentLoaded', function() {
   var verMaisBtn = document.getElementById('verMaisBtn');
-  var conteudoOculto = document.querySelector('.ocultar-conteudo');
+  var imagensMarcasOculto = document.getElementById('imagensMarcasOculto');
 
   verMaisBtn.addEventListener('click', function() {
-      // Alterna a classe para controlar a visibilidade do conteúdo
-      conteudoOculto.classList.toggle('ocultar-conteudo');
+      // Alterna a altura do conteúdo oculto
+      var atualmenteOculto = imagensMarcasOculto.style.height === '0px';
+      imagensMarcasOculto.style.height = atualmenteOculto ? 'auto' : '0';
+      imagensMarcasOculto.style.visibility = atualmenteOculto ? 'visible' : 'hidden';
+
 
       // Alterna o texto do botão entre "Ver Mais" e "Mostrar Menos"
       var textoAtual = verMaisBtn.textContent.trim();
