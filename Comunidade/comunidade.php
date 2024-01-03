@@ -7,23 +7,7 @@ if(!isset($_SESSION)) {
 
 include_once('../Base/conexao.php');
 
-// Verifica se o formulário foi enviado
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recupera o comentario do formulário
-    $comentario = $_POST['comentario'];
 
-    // Recupera o usuario_id da sessão (certifique-se de definir isso ao autenticar o usuário)
-    $usuario_id = $_SESSION['usuario_id'];
-
-    // Insere o comentario no banco de dados
-    $sql = "INSERT INTO comentarios (comentario, usuario_id) VALUES ('$comentario', $usuario_id)";
-
-    if (mysqli_query($mysqli, $sql)) {
-        // echo "Comentário enviado com sucesso!";
-    } else {
-        // echo "Erro ao enviar o comentário: " . mysqli_error($conexao);
-    }
-}
 ?>
 
 
@@ -58,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       include_once("../templates/header.php");
     ?>
 
-<a href="../Home/home-foda.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+<a href="../Home/home-foda.php" class="voltar-home"><button type="button" class="btn btn-secondary">Voltar</button></a>
 
 <br>
             <h1 class="text-center">COMUNIDADE</h1>
@@ -71,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <br>
 
             <div class="container text-center ocultar-conteudo">
-                <form action="comunidade.php" method="POST">
+                <form action="criar-comentario.php" method="POST">
                     <h3>Digite seu comentário:</h3>
                     <textarea name="comentario" id="comentario" cols="30" rows="10" maxlength="255" placeholder="Digite seu comentario..."></textarea>
                     <br>
@@ -82,23 +66,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
             </div>
 
-            <div class="fabricio row mt-3">
-                <div class="col-md-3">
-                <img src="../Imagens-não-oficiais/foto-de-perfil-default.jpg" class="card-img-top rounded-circle" alt="..." style="width: 200px; height: 200px; object-fit: cover;">
-                </div>
-                <div class="col-md-9 informacoes-fabricio">
-                    <p>Orelha master 123 (mago dos games)</p>
-                    <p>⭐⭐⭐⭐⭐</p>
-                    <p>A Camiseta Exclusiva Colorado superou todas as expectativas! A qualidade do material é excepcional, proporcionando um conforto notável. O design impressionante, fiel ao personagem. Uma compra que vale cada centavo!</p>
-                </div>
-            </div>
 
 
-    <?php
-    include_once("../templates/footer.php");
-    ?>
+            <?php 
 
+                   // Consulta SQL para obter todos os comentários com conteúdo
+                    $sqlComentarios = "SELECT comentario_id, comentario, usuario_nome, usuario_id FROM comentarios";
+                    $resultadoComentarios = $mysqli->query($sqlComentarios);
+
+                    // Verificar se há resultados
+                    if ($resultadoComentarios->num_rows > 0) {
+                        // Iterar sobre os resultados e exibir cada comentário
+                        while ($row = $resultadoComentarios->fetch_assoc()) {
+                            // Obter dados do banco de dados
+                            $comentarioID = $row['comentario_id'];
+                            $conteudoComentario = $row['comentario'];
+                            $usuarioID = $row['usuario_id'];
+                            $usuarioNome = $row['usuario_nome'];
+
+                            // Agora, faça uma nova consulta para obter a foto do usuário
+                            $sqlUsuario = "SELECT foto FROM usuarios WHERE usuario_id = $usuarioID";
+                            $resultadoUsuario = $mysqli->query($sqlUsuario);
+
+                            // Verificar se há resultados para o usuário
+                            if ($resultadoUsuario->num_rows > 0) {
+                                $rowUsuario = $resultadoUsuario->fetch_assoc();
+                                $usuarioFoto = $rowUsuario['foto'];
+
+                                // Verificar se o usuário tem uma foto de perfil
+                                if ($usuarioFoto) {
+                                    $usuarioFotoBase64 = base64_encode($usuarioFoto);
+                                } else {
+                                    // Usar foto padrão se o usuário não tiver uma foto
+                                    $fotoPadraoPath = '../Imagens-não-oficiais/foto-de-perfil-default.jpg';
+                                    $usuarioFotoBase64 = base64_encode(file_get_contents($fotoPadraoPath));
+                                }
+
+                                // Exibir o template com os dados do comentário
+                                echo '<div class="template row mt-3 p-3 rounded shadow">
+                                        <div class="col-md-3 dados-do-comentario">
+                                            <img src="data:image/jpeg;base64,' . $usuarioFotoBase64 . '" class="img-fluid rounded-circle foto-de-perfil" style="width: 130px; height: 130px; object-fit: cover;" alt="Foto de Perfil">
+                                        </div>
+                                        <div class="col-md-9 informacoes-template">
+                                            <p class="fw-bold">' . $usuarioNome . '</p>
+                                            <p class="mb-0">' . $conteudoComentario . '</p>
+                                        </div>
+                                    </div>';
+                            }
+                        }
+                    }
+
+                 // Fechar a conexão com o banco de dados
+                 $mysqli->close();
+                  ?>
+
+            <?php
+            include_once("../templates/footer.php");
+            ?>
+            
 <script src="comunidade.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 </html>

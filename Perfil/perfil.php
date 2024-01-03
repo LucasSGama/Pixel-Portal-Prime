@@ -51,8 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     endereco='$endereco', 
                     CEP='$CEP', 
                     data_nascimento='$data_nascimento', 
-                    telefone='$telefone',
-                    foto='$foto' 
+                    telefone='$telefone'
                     WHERE usuario_id = '$_SESSION[usuario_id]'";
 
 
@@ -67,33 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['CEP'] = $CEP;
             $_SESSION['data_nascimento'] = $data_nascimento;
             $_SESSION['telefone'] = $telefone;
-            $_SESSION['foto'] = $foto;
         } else {
             echo "Erro na atualização de dados: " . $mysqli->error;
         }
 
-         // Manipulação do upload da foto
-         if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
-            $foto = file_get_contents($_FILES['foto']['tmp_name']);
-        
-            // Atualiza a coluna 'foto' no banco de dados
-            $sqlUpdateFoto = "UPDATE usuarios SET foto = ? WHERE usuario_id = ?";
-            $stmt = $mysqli->prepare($sqlUpdateFoto);
-            $stmt->bind_param("si", $foto, $_SESSION['usuario_id']);
-        
-            if ($stmt->execute()) {
-                // Sucesso ao atualizar a foto
-                
-                // Atualiza a variável de sessão 'foto'
-                $_SESSION['foto'] = $foto;
-        
-                // ... (seu código adicional)
-            } else {
-                echo "Erro ao atualizar a foto: " . $stmt->error;
-            }
-        
-            $stmt->close();
-        }
     }
 
 ?>
@@ -121,21 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Conta</title>
 
     <style>
-        /* Estilize seu pop-up aqui */
-        #popup {
-            position: fixed;
-            width: 170px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            display: <?php echo isset($_SESSION['alteracoes_salvas']) && $_SESSION['alteracoes_salvas'] ? 'flex' : 'none'; ?>;
-        }
         .botao {
           width: 100px;
           border-radius: 10px;
@@ -172,44 +133,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Body -->
 
 
-    <form action="perfil.php" method="POST" id="excluir-form" enctype="multipart/form-data">
-    <div class="col-md-6">
-    <div id="confirmarExclusao" style="display: none;">
-        <p>Tem certeza que deseja excluir o perfil?</p>
-        <button type="submit" class="btn btn-danger" name="confirmar_exclusao">Confirmar Exclusão</button>
-        <button type="button" class="btn btn-secondary" onclick="cancelarExclusao()">Cancelar</button>
-    </div>
-    </div>
-
-
-    <div class="col-md-6">
-        <div id="foto-de-perfil" style="display: none;">
-            <p>Selecione a sua foto</p>
-            <input type="file" name="foto" accept="image/*">
-            <br>
-            <br>
-            <button type="button" class="btn btn-secondary" onclick="NaoMudarFoto()">Cancelar</button>      
-            <button type="submit" class="btn btn-success  salvar" name="submit" id="submit" onclick="abrirPopup()">Salvar</button>
-        </div>
-    </div>
-
-           <!-- Seção do pop-up -->
-    <div id="popup">
-    <!-- Conteúdo do pop-up -->
-    <?php if(isset($_SESSION['nome'])): ?>
-    <p>Alterações salvas</p>
-    <?php endif; ?>
-    <div class="parte-baixo">
-    <button class="botao" onclick="fecharPopup()">Fechar</button>
-    </div>
-</div>
-
+    
+    
     <div class="container">
         <h1 class="mb-4">INFORMAÇÕES DO PERFIL</h1>
+        <form action="trocar-foto.php" method="POST" enctype="multipart/form-data">
+        <div>
+            <div id="foto-de-perfil" style="display: none;">
+                <p>Selecione a sua foto</p>
+                <input type="file" name="foto" accept="image/*">
+                <br>
+                <br>
+                <button type="button" class="btn btn-secondary" onclick="NaoMudarFoto()">Cancelar</button>      
+                <button type="submit" class="btn btn-success  salvar" name="submit" id="submit">Salvar</button>
+                <!-- <button type="submit" class="btn btn-success  salvar" name="submit" id="submit" onclick="abrirPopup()">Salvar</button> -->
+            </div>
+        </div>
         <div class="row">
             <!-- _______________________________ -->
             <div class="col-md-6 esquerda-meio-container">
-                <h3>FOTO DE PERFIL</h3>
+                <h3 class="text-foto-de-perfil">FOTO DE PERFIL</h3>
                 <div class="foto-perfil-container position-relative">
                     <?php
                     if (isset($_SESSION['foto'])) {
@@ -225,9 +168,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <!-- Adicione input para upload de foto -->
                 </div>
             </div>
-
+            </form>   
             <!-- ___________________ -->
-            <div class="col-md-6 informacoes-principais">
+            
+            <form action="perfil.php" method="POST" id="excluir-form" enctype="multipart/form-data" class="col-md-6">
+                
+
+            <div class="informacoes-principais">
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome:</label>
                     <input type="text" name="nome" id="nome" class="form-control" minlength="6" maxlength="18" required value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>">
@@ -243,52 +190,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <div class="row mt-4 baixo-conteiner">
-            <h3>Informações adicionais:</h3>
-            <div class="col-md-4 genero">
-                <!-- id="genero" -->
-                <label for="genero" class="form-label">Genêro:</label>
-                <br>
-                <input type="radio" id="masculino" name="genero" value="masculino" <?php echo (isset($_SESSION['genero']) && $_SESSION['genero'] === 'masculino') ? 'checked' : ''; ?>>
-                <label for="masculino">Masculino</label>
+    <h3>Informações adicionais:</h3>
 
-                <input type="radio" id="feminino" name="genero" value="feminino" <?php echo (isset($_SESSION['genero']) && $_SESSION['genero'] === 'feminino') ? 'checked' : ''; ?>>
-                <label for="feminino">Feminino</label>
-
-                <br>
-
-                <input type="radio" id="outro" name="genero" value="outro" <?php echo (isset($_SESSION['genero']) && $_SESSION['genero'] === 'outro') ? 'checked' : ''; ?>>
-                <label for="outro">Outro</label>
-
-            </div>
-            <div class="col-md-4 localizacao">
-                <label for="endereco">Localização</label>
-                <br>
-                <input type="text" name="endereco" id="endereco" value="<?php echo isset($_SESSION['endereco']) ? $_SESSION['endereco'] : ''; ?>">
-                <br>
-                <label for="CEP" class="CEP-TELEFONE">CEP:</label>
-                <br>
-                <input type="number" name="CEP" id="CEP" value="<?php echo isset($_SESSION['CEP']) ? $_SESSION['CEP'] : ''; ?>">
-            </div>
-            <div class="col-md-4 data-de-nascimento">
-                <label for="data-de-nascimento">Data de Nascimento:</label>
-                <br>
-                <input type="date" name="data_nascimento" id="data_nascimento" value="<?php echo isset($_SESSION['data_nascimento']) ? $_SESSION['data_nascimento'] : ''; ?>">
-                <br>
-                <!-- TELEFONE -->
-                <label for="telefone" class="CEP-TELEFONE">Telefone:</label>
-                <br>
-                <input type="number" name="telefone" id="telefone" class="telefone" value="<?php echo isset($_SESSION['telefone']) ? $_SESSION['telefone'] : ''; ?>">
-                <br>
-            </div>
+    <div class="col-md-4 col-sm-12 genero">
+        <label for="genero" class="form-label">Gênero:</label>
+        <br>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="masculino" name="genero" value="masculino" class="form-check-input" <?php echo (isset($_SESSION['genero']) && $_SESSION['genero'] === 'masculino') ? 'checked' : ''; ?>>
+            <label for="masculino" class="form-check-label">Masculino</label>
         </div>
+
+        <div class="form-check form-check-inline">
+            <input type="radio" id="feminino" name="genero" value="feminino" class="form-check-input" <?php echo (isset($_SESSION['genero']) && $_SESSION['genero'] === 'feminino') ? 'checked' : ''; ?>>
+            <label for="feminino" class="form-check-label">Feminino</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input type="radio" id="outro" name="genero" value="outro" class="form-check-input" <?php echo (isset($_SESSION['genero']) && $_SESSION['genero'] === 'outro') ? 'checked' : ''; ?>>
+            <label for="outro" class="form-check-label">Outro</label>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-12 localizacao">
+        <label for="endereco" class="label-inputs-abaixo">Localização</label>
+        <br>
+        <input type="text" name="endereco" id="endereco" class="form-control inputs-baixos" value="<?php echo isset($_SESSION['endereco']) ? $_SESSION['endereco'] : ''; ?>">
+        <br>
+        <label for="CEP" class="CEP-TELEFONE label-inputs-abaixo">CEP:</label>
+        <br>
+        <input type="number" name="CEP" id="CEP" class="form-control inputs-baixos" value="<?php echo isset($_SESSION['CEP']) ? $_SESSION['CEP'] : ''; ?>">
+    </div>
+
+    <div class="col-md-4 col-sm-12 data-de-nascimento">
+        <label for="data-de-nascimento" class="label-inputs-abaixo">Data de Nascimento:</label>
+        <br>
+        <input type="date" name="data_nascimento" id="data_nascimento" class="form-control inputs-baixos" value="<?php echo isset($_SESSION['data_nascimento']) ? $_SESSION['data_nascimento'] : ''; ?>">
+        <br>
+        <label for="telefone" class="CEP-TELEFONE label-inputs-abaixo">Telefone:</label>
+        <br>
+        <input type="number" name="telefone" id="telefone" class="form-control telefone inputs-baixos" value="<?php echo isset($_SESSION['telefone']) ? $_SESSION['telefone'] : ''; ?>">
+        <br>
+    </div>
+</div>
+
         <br>
         <div class="botoes">
         <a href="../Home/home-foda.php"><button type="button" class="btn voltar">Voltar</button></a>
         <button type="button" class="btn btn-danger deletar" name="excluir_perfil" onclick="confirmarExclusao()">Deletar</button>
-        <button type="submit" class="btn btn-success  salvar" name="submit" id="submit" onclick="abrirPopup()">Salvar</button>
+        <button type="submit" class="btn btn-success  salvar" name="submit" id="submit">Salvar</button>
         <!-- <button type="submit" class="btn btn-success botoes Editar" name="submit" id="submit" onclick="abrirPopup()">Salvar</button> -->
         </div>
     </div>
+
+
+    <div class="col-md-6">
+            <div id="confirmarExclusao" style="display: none;">
+                <p>Tem certeza que deseja excluir o perfil?</p>
+                 <button type="submit" class="btn btn-danger" name="confirmar_exclusao">Confirmar Exclusão</button>                    <button type="button" class="btn btn-secondary" onclick="cancelarExclusao()">Cancelar</button>
+           </div>
+     </div>
+
 </form>
 
     <!-- footer -->  
@@ -300,18 +261,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
     // Função para abrir o pop-up
-    function abrirPopup() {
-        document.getElementById('popup').style.display = 'block';
-        // Desabilita o botão de salvar enquanto o pop-up estiver aberto
-        document.getElementById('submit').disabled = true;
-    }
+    // function abrirPopup() {
+    //     document.getElementById('popup').style.display = 'block';
+    //     // Desabilita o botão de salvar enquanto o pop-up estiver aberto
+    //     document.getElementById('submit').disabled = true;
+    // }
 
-    // Função para fechar o pop-up
-    function fecharPopup() {
-        document.getElementById('popup').style.display = 'none';
-        // Habilita o botão de salvar quando o pop-up for fechado
-        document.getElementById('submit').disabled = false;
-    }
+    // // Função para fechar o pop-up
+    // function fecharPopup() {
+    //     document.getElementById('popup').style.display = 'none';
+    //     // Habilita o botão de salvar quando o pop-up for fechado
+    //     document.getElementById('submit').disabled = false;
+    // }
 
     // Função para abrir a seção de confirmação de exclusão
 function confirmarExclusao() {

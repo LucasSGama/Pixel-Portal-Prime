@@ -45,6 +45,50 @@ background-color: rgba(255, 255, 255, 0.2);
     margin-left: 320px;
 }
 
-a button{
+.voltar-home button{
     margin-left: 150px;
+}
+
+
+.template {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(169, 169, 169, 0.5);
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.informacoes-template {
+    padding-left: 20px;
+}
+
+.informacoes-template p {
+    margin: 0;
+}
+
+.informacoes-template p.mb-1 {
+    margin-bottom: 5px;
+}
+
+.informacoes-template p.mb-0 {
+    margin-bottom: 15px;
+}
+
+.informacoes-template p.fw-bold {
+    font-weight: bold;
+}
+
+.dados-do-comentario {
+    display: flex;
+    align-items: center;
+}
+
+.dados-do-comentario img {
+    /* width: 150px;
+    height: 150px; */
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
 }
