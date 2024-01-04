@@ -79,8 +79,8 @@ include_once('../Base/conexao.php');
             <?php 
 
                    // Consulta SQL para obter todos os comentários com conteúdo
-                    $sqlComentarios = "SELECT comentario_id, comentario, usuario_nome, usuario_id, data_criacao FROM comentarios";
-                    $resultadoComentarios = $mysqli->query($sqlComentarios);
+                   $sqlComentarios = "SELECT comentario_id, comentario, usuario_nome, usuario_id, data_criacao FROM comentarios ORDER BY data_criacao DESC";
+                   $resultadoComentarios = $mysqli->query($sqlComentarios);
 
                     // Verificar se há resultados
                     if ($resultadoComentarios->num_rows > 0) {
