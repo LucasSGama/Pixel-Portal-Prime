@@ -1,3 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Define a altura mínima da tela para garantir que o conteúdo preencha a tela inteira */
+    margin: 0; /* Remove as margens padrão do corpo da página */
+}
+
 footer {
     display: flex;
     flex-direction: row;
@@ -5,8 +12,12 @@ footer {
     align-items: center;
     background-color: #000000;
     font-size: 13px;
-    margin-top: 45px;
-  }
+    margin-top: auto; /* Move o footer para a parte inferior da página */
+    padding: 20px; /* Adiciona algum espaço ao redor do conteúdo do footer */
+    width: 100%; /* Garante que o footer ocupa a largura total da página */
+    box-sizing: border-box; /* Garante que a largura inclui a largura do preenchimento e da borda */
+}
+
   
   .escrita-footer {
     line-height: 15px;

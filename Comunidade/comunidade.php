@@ -46,32 +46,40 @@ include_once('../Base/conexao.php');
 
 <br>
             <h1 class="text-center">COMUNIDADE</h1>
-            <div class="d-flex justify-content-around p-3">
-                <h6>Comentários:</h6>
+
+            <div class="d-flex justify-content-center botoes-comunidade">
+                <a href="../Comentarios-pessoais/comentarios-pessoais.php" class="comentarios-pessoais-link">
+                    <button class="btn btn-outline-warning">Meus comentários</button>
+                </a>
                 <button class="btn btn-outline-primary" id="CriarBTN">Criar comentário</button>
             </div>
 
             <br>
-            <br>
 
             <div class="container text-center ocultar-conteudo">
-                <form action="criar-comentario.php" method="POST">
-                    <h3>Digite seu comentário:</h3>
-                    <textarea name="comentario" id="comentario" cols="30" rows="10" maxlength="255" placeholder="Digite seu comentario..."></textarea>
-                    <br>
-                        <div class="botoes">
-                            <button type="button" class="btn btn-secondary" id="CancelarBTN">Cancelar</button>
-                            <button type="submit" class="btn btn-success">Enviar</button>
-                        </div>
+                <form action="criar-comentario.php" method="POST" class="mx-auto mt-5" style="max-width: 700px;">
+                    <h3 class="mb-4">Digite seu comentário:</h3>
+                    <div class="mb-3 d-flex justify-content-center">
+                        <textarea class="form-control" name="comentario" id="comentario" rows="5" maxlength="255" placeholder="Digite seu comentário..." style="width: 100%;"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary me-2" id="CancelarBTN">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
                 </form>
             </div>
 
 
 
+
+            <div class="d-flex justify-content-center">
+                <h6 id="comentarios-postados">Comentários postados:</h6>
+            </div>
+
             <?php 
 
                    // Consulta SQL para obter todos os comentários com conteúdo
-                    $sqlComentarios = "SELECT comentario_id, comentario, usuario_nome, usuario_id FROM comentarios";
+                    $sqlComentarios = "SELECT comentario_id, comentario, usuario_nome, usuario_id, data_criacao FROM comentarios";
                     $resultadoComentarios = $mysqli->query($sqlComentarios);
 
                     // Verificar se há resultados
@@ -83,6 +91,7 @@ include_once('../Base/conexao.php');
                             $conteudoComentario = $row['comentario'];
                             $usuarioID = $row['usuario_id'];
                             $usuarioNome = $row['usuario_nome'];
+                            $DataCriacao = $row['data_criacao'];
 
                             // Agora, faça uma nova consulta para obter a foto do usuário
                             $sqlUsuario = "SELECT foto FROM usuarios WHERE usuario_id = $usuarioID";
@@ -110,6 +119,8 @@ include_once('../Base/conexao.php');
                                         <div class="col-md-9 informacoes-template">
                                             <p class="fw-bold">' . $usuarioNome . '</p>
                                             <p class="mb-0">' . $conteudoComentario . '</p>
+                                            <p class="data-criacao">Data e horário da postagem:</p>
+                                            <p class="data-criacao">'. $DataCriacao .'</p>
                                         </div>
                                     </div>';
                             }
@@ -118,7 +129,7 @@ include_once('../Base/conexao.php');
 
                  // Fechar a conexão com o banco de dados
                  $mysqli->close();
-                  ?>
+            ?>
 
             <?php
             include_once("../templates/footer.php");

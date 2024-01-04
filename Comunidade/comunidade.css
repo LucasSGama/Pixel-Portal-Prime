@@ -5,7 +5,7 @@
     background-image: url(../Imagens-não-oficiais/background_comentario.jpg);
     background-size: cover;
     background-position: center center; /* centraliza a imagem */
-    width: 700px;
+    /* width: 700px; Remova esta linha */
 }
 
 h3 {
@@ -91,4 +91,13 @@ background-color: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border: 1px solid black;
+}
+
+.data-criacao {
+    text-align: end;
+}
+
+.botoes-comunidade {
+    margin-top: 20px;
+    gap: 50px;
 }
