@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testando template</title>
+
+    <link rel="stylesheet" href="comentarios-pessoais.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="../Imagens-não-oficiais/logo.png" type="image/x-icon">
+
+    <!-- Link para os icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+</head>
+<body>
+    <h1 class="text-center mt-5">Meus comentarios:</h1>
+
+    <div class="template row mt-3 p-3 rounded shadow">
+        <div class="col-md-3 dados-do-comentario">
+            <!-- Substitua pela sua lógica de obtenção de dados do usuário -->
+            <img src="caminho-para-imagem.jpg" class="img-fluid rounded-circle foto-de-perfil" style="width: 130px; height: 130px; object-fit: cover;" alt="Foto de Perfil">
+        </div>
+        <div class="col-md-9 informacoes-template">
+            <!-- Substitua pela sua lógica de obtenção de dados do comentário -->
+            <p class="fw-bold">Nome do Usuário</p>
+            <p class="mb-0" id="conteudoComentario_1">Conteúdo do Comentário</p>
+            
+            <form action="editar-comentario.php" method="post" class="form-edicao" style="display: none;" data-comentario-id="1">
+                <textarea class="form-control mb-2" name="novo_comentario" rows="3" placeholder="Digite sua edição...">Conteúdo do Comentário</textarea>
+                <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="cancelarEdicao(1)">Cancelar</button>
+            </form>
+            
+            <button class="btn btn-sm editar-btn" onclick="ativarEdicao(1)"><i class="bi bi-pencil-fill"></i> Editar</button>
+    
+            <form action="excluir-comentario.php" method="post" style="display:inline;">
+                <input type="hidden" name="comentario_id" value="1">
+                <button type="submit" class="btn btn-sm"><i class="bi bi-trash-fill"></i> Excluir</button>
+            </form>
+    
+            <!-- Substitua pela sua lógica de obtenção da data de criação -->
+            <p class="data-criacao">Data e horário da postagem:</p>
+            <p class="data-criacao">Data de Criação</p>
+        </div>
+    </div>
+
+    <script>
+        function ativarEdicao(comentarioID) {
+            // Oculta o parágrafo de conteúdo
+            document.getElementById('conteudoComentario_' + comentarioID).style.display = 'none';
+            
+            // Exibe o formulário de edição
+            document.querySelector('[data-comentario-id="' + comentarioID + '"]').style.display = 'block';
+        }
+
+        function cancelarEdicao(comentarioID) {
+            // Exibe o parágrafo de conteúdo
+            document.getElementById('conteudoComentario_' + comentarioID).style.display = 'block';
+            
+            // Oculta o formulário de edição
+            document.querySelector('[data-comentario-id="' + comentarioID + '"]').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+
+
+
+<!--     <div class="template row mt-3 p-3 rounded shadow">
+        <div class="col-md-3 dados-do-comentario">
+            <img src="data:image/jpeg;base64,' . $usuarioFotoBase64 . '" class="img-fluid rounded-circle foto-de-perfil" style="width: 130px; height: 130px; object-fit: cover;" alt="Foto de Perfil">
+        </div>
+        <div class="col-md-9 informacoes-template">
+            <p class="fw-bold">' . $usuarioNome . '</p>
+            <p class="mb-0" id="conteudoComentario_' . $comentarioID . '">' . $conteudoComentario . '</p>
+            
+            <form action="editar-comentario.php" method="post" class="form-edicao" style="display: none;" data-comentario-id="' . $comentarioID . '">
+                <textarea class="form-control mb-2" name="novo_comentario" rows="3" placeholder="Digite sua edição...">' . $conteudoComentario . '</textarea>
+                <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="cancelarEdicao(' . $comentarioID . ')">Cancelar</button>
+            </form>
+            
+            <button class="btn btn-sm editar-btn" onclick="ativarEdicao(' . $comentarioID . ')" data-comentario-id="' . $comentarioID . '"><i class="bi bi-pencil-fill"></i> Editar</button>
+    
+            <form action="excluir-comentario.php" method="post" style="display:inline;">
+                <input type="hidden" name="comentario_id" value="' . $comentarioID . '">
+                <button type="submit" class="btn btn-sm"><i class="bi bi-trash-fill"></i> Excluir</button>
+            </form>
+    
+            <p class="data-criacao">Data e horário da postagem:</p>
+            <p class="data-criacao">' . $DataCriacao . '</p>
+        </div>
+    </div>
+ -->
