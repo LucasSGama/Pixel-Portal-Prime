@@ -3,6 +3,13 @@
 if(!isset($_SESSION)) {
     session_start();
   }  
+  // Verifica se o usuário não está logado
+if (!isset($_SESSION['nome'])) {
+    // Se não estiver logado, exibe uma mensagem e encerra o script
+    include_once("../nao-logado/nao-logado.php");
+    exit();
+  }
+  
 // Seu código de conexão ao banco de dados aqui
 include_once "../Base/conexao.php"; // Substitua pelo seu arquivo de conexão
 
