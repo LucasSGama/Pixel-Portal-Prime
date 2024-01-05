@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+  session_start();
+}
 
   // Verifica se o usuário não está logado
 if (!isset($_SESSION['nome'])) {

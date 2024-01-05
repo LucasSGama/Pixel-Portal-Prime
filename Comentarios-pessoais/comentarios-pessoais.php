@@ -95,20 +95,21 @@ include_once('../Base/conexao.php');
                             <img src="data:image/jpeg;base64,' . $usuarioFotoBase64 . '" class="img-fluid rounded-circle foto-de-perfil" style="width: 130px; height: 130px; object-fit: cover;" alt="Foto de Perfil">
                         </div>
                         <div class="col-md-9 informacoes-template">
-                            <p class="fw-bold">' . $usuarioNome . '</p>
-                            <p class="mb-0">' . $conteudoComentario . '</p>';
-                        // Se a edição está ativa, exibir o formulário de edição
-                        echo '<form action="editar-comentario.php" method="post">
-                            <textarea class="form-control mb-2" name="novo_comentario" rows="3" placeholder="Digite sua edição...">' . $conteudoComentario . '</textarea>
+                            <p id="usuarioNome_' . $comentarioID . '" class="fw-bold">' . $usuarioNome . '</p>
+                            <p id="conteudoComentario_' . $comentarioID . '" class="mb-0">' . $conteudoComentario . '</p>';
+
+                    // Se a edição está ativa, exibir o formulário de edição
+                    echo '<form id="formEditar_' . $comentarioID . '" action="editar-comentario.php" method="POST" style="display:none;">
+                            <textarea class="form-control mb-2" name="atualizar_comentario" rows="3" placeholder="Digite sua edição...">' . $conteudoComentario . '</textarea>
+                            <input type="hidden" name="comentario_id" value="' . $comentarioID . '">
                             <button type="submit" class="btn btn-success btn-sm">Salvar</button>
                             <button type="button" class="btn btn-secondary btn-sm" onclick="cancelarEdicao(' . $comentarioID . ')">Cancelar</button>
                         </form>';
-                        // Se a edição não está ativa, exibir o botão de edição
-                        
-                        echo '<p class="data-criacao">Data e horário da postagem:</p>
+
+                    // Se a edição não está ativa, exibir o botão de edição
+                    echo '<p class="data-criacao">Data e horário da postagem:</p>
                         <p class="data-criacao">' . $DataCriacao . '</p>
                         <button class="btn btn-sm" onclick="ativarEdicao(' . $comentarioID . ')"><i class="bi bi-pencil-fill"></i> Editar</button>';
-                    
 
                     echo '<form action="excluir-comentario.php" method="post" style="display:inline;">
                             <input type="hidden" name="comentario_id" value="' . $comentarioID . '">
@@ -133,9 +134,21 @@ include_once('../Base/conexao.php');
 
     <script src="comunidade.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
+    
     <script>
-    // Função para ativar a edição
+    function ativarEdicao(comentarioID) {
+        // Esconder o botão de edição
+        document.querySelector('.template #formEditar_' + comentarioID).style.display = 'block';
+        // Esconder o parágrafo de conteúdo do comentário
+        document.getElementById('conteudoComentario_' + comentarioID).style.display = 'none';
+    }
+
+    function cancelarEdicao(comentarioID) {
+        // Mostrar o botão de edição
+        document.querySelector('.template #formEditar_' + comentarioID).style.display = 'none';
+        // Mostrar o parágrafo de conteúdo do comentário
+        document.getElementById('conteudoComentario_' + comentarioID).style.display = 'block';
+    }
 </script>
 
 </body>
