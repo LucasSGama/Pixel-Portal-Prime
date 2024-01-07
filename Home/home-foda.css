@@ -40,6 +40,9 @@
     opacity: 0.5;
 }
 
+.ocultar-conteudo {
+  display: none;
+}
 
 /* FOOTER */
 

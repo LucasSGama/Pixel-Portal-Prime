@@ -104,3 +104,4 @@ document.addEventListener('DOMContentLoaded', function() {
       verMaisBtn.textContent = (textoAtual === 'Mostrar Mais') ? 'Mostrar Menos' : 'Mostrar Mais';
   });
 });
+

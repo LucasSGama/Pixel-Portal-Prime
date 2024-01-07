@@ -189,13 +189,6 @@ if (!isset($_SESSION['nome'])) {
         </a>
         </div>
       </div>
-
-      <br>
-      <div class="container text-center">
-        <!-- Botão "Ver Mais" -->
-        <button class="btn btn-outline-primary" id="verMaisBtn">Mostrar Mais</button>
-    </div>
-    <br>
       
       <div class="row-cols-1 row-cols-md-4 g-4 imagens-marcas d-md-flex ocultar-conteudo" id="imagensMarcasOculto" style="height: 0; visibility: hidden;">
         <div class="my-3">
@@ -227,6 +220,13 @@ if (!isset($_SESSION['nome'])) {
         </a>
         </div>
       </div>
+
+      <br>
+      <div class="container text-center">
+        <!-- Botão "Ver Mais" -->
+        <button class="btn btn-outline-primary" id="verMaisBtn">Mostrar Mais</button>
+    </div>
+    <br>
 
 <?php
   include_once("../templates/footer.php");
