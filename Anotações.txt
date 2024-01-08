@@ -1,0 +1,83 @@
+Tela de carrinho {
+	Adicionar margin entre os produtos;
+	Trocar a forma que é mostrada a quantidade, tirar de input para texto normal;
+	
+
+}
+
+Comprar {
+	Fazer duas telas de compra, uma para um produto especifico e outra para o carrinho
+}
+
+Home {
+	Colocar um tamanho mínimo no texto dos items de novidade para ficarem sempre do mesmo tamanho;
+	Arrumar a funcionalidade do mostrar mais;
+	Adicionar mais items;
+	Estilizar melhor a parte das marcas;
+	Fazer o PopUp aparecer só uma vez durante a sessão;
+}
+
+
+Header {
+	Fazer mais items selecionaveis;
+	Deixa a barra de pesquisa funcional;
+	Adicionar uma opção "Caixa de entrada";
+	
+	navbar {
+		Adicionar items abaixo do header por exemplo: "categorias", "Todos os produtos"; "Mais vendidos"; "Melhores avaliados" entre outros
+	}
+}
+
+Caixa de entrada {
+	Fazer a página caixa de entrada, na qual recebe todos os avisos dos sites como reportes e promoções
+}
+
+
+Footer {
+	Estilizar melhor o footer (Colocar mais detalhes);
+}
+
+
+Favoritos {
+	Fazer tela dos items favoritos;
+}
+
+Produtos {
+	Adicionar mais opções na hora de adquirir o produto, por exemplo: "Tamanho" e "Cor";
+	Centralizar os items do ínicio;
+	Fazer uma opção de fazer uma avaliação do produto com nota de 1 a 5 estrelas;
+	Caso não tiver nenhuma avalição aparecer uma mensagem falando que não tem;
+	Adicionar uma nota pro produto (inicial de 0);
+	Adicionar uma função na qual a nota do produto muda dependendo da avaliação;
+}
+
+
+* {
+	Melhorar o botão de voltar;
+}
+
+Perfil { 
+	Melhorar o botão de voltar;
+	Trocar fundo se possível;
+}
+
+Marcas {
+	Fazer uma página para as marcas;
+}
+
+Empresa {
+	Fazer página falando sobre a empresa e objetivos;
+}
+
+Suporte {
+	Fazer página de suporte, para mandar duvidas para o banco de dados;
+	Fazer opção de mostrar todas as duvidas;
+	Fazer opção de responder duvidas;
+	Fazer opção de editar ou remover sua duvida;
+	Fazer opção de reportar uma duvida inadequada;
+}
+
+Comunidade {
+	Fazer opção de reportar comentarios na comunidade;
+	Fazer função para quando receber um reporte, receber uma notifição ao abrir a tela de comunidade avisando sobre o reporte que só aparecera uma vez;
+}
