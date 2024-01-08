@@ -31,10 +31,10 @@ include_once('../Base/conexao.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Link para o header -->
-    <link rel="stylesheet" href="../templates/header.css">
+    <link rel="stylesheet" href="../templates/header/header.css">
 
     <!-- Link para o footer -->
-    <link rel="stylesheet" href="../templates/footer.css">
+    <link rel="stylesheet" href="../templates/footer/footer.css">
 
     <!-- Link para o css -->
     <link rel="stylesheet" href="comentarios-pessoais.css">
@@ -42,7 +42,7 @@ include_once('../Base/conexao.php');
 
 <body>
     <?php
-    include_once("../templates/header.php");
+    include_once("../templates/header/header.php");
     ?>
 
     <a href="../Comunidade/comunidade.php" class="voltar-home"><button type="button" class="btn btn-secondary">Voltar</button></a>
@@ -129,7 +129,7 @@ include_once('../Base/conexao.php');
     ?>
 
     <?php
-    include_once("../templates/footer.php");
+    include_once("../templates/footer/footer.php");
     ?>
 
     <script src="comunidade.js"></script>

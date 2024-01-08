@@ -96,10 +96,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="shortcut icon" href="../Imagens-não-oficiais/logo.png" type="image/x-icon">
 
     <!-- Link para o header -->
-    <link rel="stylesheet" href="../templates/header.css">
-    
+    <link rel="stylesheet" href="../templates/header/header.css">
+
     <!-- Link para o footer -->
-    <link rel="stylesheet" href="../templates/footer.css">
+    <link rel="stylesheet" href="../templates/footer/footer.css">
     
     <title>Conta</title>
 
@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Header -->
      <!-- Header -->
      <?php
-      include_once("../templates/header.php");
+      include_once("../templates/header/header.php");
     ?>
     <!-- ______________________________-->
     <!-- Body -->
@@ -261,7 +261,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- footer -->  
     <?php
-    include_once("../templates/footer.php");
+    include_once("../templates/footer/footer.php");
     ?>
     <!-- _____________________ -->
     <!-- BootStrap - Script -->

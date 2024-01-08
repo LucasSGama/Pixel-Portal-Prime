@@ -30,16 +30,17 @@ if (!isset($_SESSION['nome'])) {
 
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="sobre-nos.css">
+    
     <!-- Link para o header -->
-    <link rel="stylesheet" href="../templates/header.css">
+    <link rel="stylesheet" href="../templates/header/header.css">
 
     <!-- Link para o footer -->
-    <link rel="stylesheet" href="../templates/footer.css">
+    <link rel="stylesheet" href="../templates/footer/footer.css">
 
 </head>
 <body>
     <?php
-      include_once("../templates/header.php");
+      include_once("../templates/header/header.php");
     ?>
 
   <br><br>
@@ -120,7 +121,7 @@ if (!isset($_SESSION['nome'])) {
 
 
     <?php
-    include_once("../templates/footer.php");
+    include_once("../templates/footer/footer.php");
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

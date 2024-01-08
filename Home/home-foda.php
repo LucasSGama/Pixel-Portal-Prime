@@ -12,6 +12,7 @@ if (!isset($_SESSION['nome'])) {
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -32,10 +33,10 @@ if (!isset($_SESSION['nome'])) {
     <link rel="stylesheet" href="home-foda.css">
 
     <!-- Link para o header -->
-    <link rel="stylesheet" href="../templates/header.css">
+    <link rel="stylesheet" href="../templates/header/header.css">
 
     <!-- Link para o footer -->
-    <link rel="stylesheet" href="../templates/footer.css">
+    <link rel="stylesheet" href="../templates/footer/footer.css">
 
     <style>
         /* Estilize seu pop-up aqui */
@@ -75,19 +76,34 @@ if (!isset($_SESSION['nome'])) {
   </head>
 <body>
     <?php
-      include_once("../templates/header.php");
+      include_once("../templates/header/header.php");
     ?>
 
+
+<?php
+// Verifica se o popup já foi exibido nesta sessão
+if (!isset($_SESSION['popup_exibido'])) {
+    // Se ainda não foi exibido, exibe o popup
+    $_SESSION['popup_exibido'] = true;
+
+?>
+
 <div id="popup">
-    <!-- Conteúdo do pop-up -->
-    <?php if(isset($_SESSION['nome'])): ?>
-    <p>Bem vindo de volta, <?php echo $_SESSION['nome']; ?>!!</p>
+    <?php if (isset($_SESSION['nome'])): ?>
+        <p>Bem vindo de volta, <?php echo $_SESSION['nome']; ?>!!</p>
     <?php endif; ?>
     <div class="parte-baixo">
-    <p>🤓🤓🤓🤓🤓🤓🤓🤓🤓</p>
-    <button class="botao" onclick="fecharPopup()">Fechar</button>
+        <p>🤓🤓🤓🤓🤓🤓🤓🤓🤓</p>
+        <button class="botao" onclick="fecharPopup()">Fechar</button>
     </div>
 </div>
+
+<?php
+
+}
+
+?>
+
      <!-- Carrossel -->
 
      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -229,28 +245,29 @@ if (!isset($_SESSION['nome'])) {
     <br>
 
 <?php
-  include_once("../templates/footer.php");
+  include_once("../templates/footer/footer.php");
 ?>
-
 
 
 </body>
 <script>
-    // Função para abrir o pop-up automaticamente
-    window.onload = function() {
-        abrirPopup();
+  // Função para abrir o pop-up automaticamente
+  window.onload = function() {
+    abrirPopup();
     };
-
+    
     // Função para abrir o pop-up
     function abrirPopup() {
-        document.getElementById('popup').style.display = 'block';
+      document.getElementById('popup').style.display = 'block';
     }
 
     // Função para fechar o pop-up
     function fecharPopup() {
-        document.getElementById('popup').style.display = 'none';
+      document.getElementById('popup').style.display = 'none';
     }
-</script>
+  </script>
+<script src="../templates/header/header.js"></script>
 <script src="home-foda.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
 </html>

@@ -53,16 +53,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="compras.css">
 
-     <!-- Link para o header -->
-     <link rel="stylesheet" href="../templates/header.css">
+    <!-- Link para o header -->
+    <link rel="stylesheet" href="../templates/header/header.css">
 
     <!-- Link para o footer -->
-    <link rel="stylesheet" href="../templates/footer.css">
+    <link rel="stylesheet" href="../templates/footer/footer.css">
 
 </head>
 <body>
     <?php
-      include_once("../templates/header.php");
+      include_once("../templates/header/header.php");
     ?>
 
 <div class="container">
@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantidade']) && isse
     </div>
 
 <?php
-  include_once("../templates/footer.php");
+  include_once("../templates/footer/footer.php");
 ?>
 
 <script src="compras.js"></script>
